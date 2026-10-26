@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-platform="web">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WPS AI 编辑专项 Demo</title>
+<!-- kd tokens（原样复制，勿改） -->
+<link rel="stylesheet" href="css/tokens.css">
+<!-- ribbon 复用样式（抽取自 wps-ribbon/previews，原样保留） -->
+<link rel="stylesheet" href="css/ribbon.css">
+<!-- 页面样式 -->
+<link rel="stylesheet" href="css/app.css?v=20261026-skills">
+<!-- 灵犀侧边栏样式 -->
+<link rel="stylesheet" href="css/agent.css?v=20261011">
+<!-- 文内 LUI 样式（划词菜单 / 输入框 / 过程面板 / 决策条） -->
+  <link rel="stylesheet" href="css/lui.css?v=20261016">
+<link rel="stylesheet" href="css/et-quick-build.css?v=20261026-entry2">
+<link rel="stylesheet" href="css/et-skills.css?v=20261026-success-toast">
+<link rel="stylesheet" href="css/et-legacy-ai.css?v=20261026">
+</head>
+<body>
+  <!-- 壳：顶部 doc tab 条（app.js 渲染） -->
+  <div id="doc-tab-bar"></div>
+
+  <!-- 主页视图（home.js 渲染） -->
+  <main id="view-home"></main>
+
+  <!-- 编辑器视图（editors.js 渲染，四组件共用此容器） -->
+  <main id="view-editor" hidden></main>
+
+  <!-- 弹窗挂载点（新建弹窗等） -->
+  <div id="modal-root"></div>
+
+  <script src="js/icons.js?v=20261003"></script>
+  <script src="js/mock-files.js?v=202610"></script>
+  <script src="js/mock/agent-scripts.js?v=202610"></script>
+  <script src="js/mock/lui-scripts.js"></script>
+  <script src="ribbons/wps.js"></script>
+  <script src="ribbons/et.js?v=20261026-settings-group"></script>
+  <script src="ribbons/wpp.js"></script>
+  <script src="ribbons/pdf.js"></script>
+  <script src="js/agent.js?v=20261026-success-toast"></script>
+  <script src="js/ribbon-ladder.js"></script>
+  <script src="js/editors.js?v=20261026-skills"></script>
+  <script src="js/editor-api.js"></script>
+  <script src="js/lui.js?v=20261015"></script>
+  <script src="js/home.js"></script>
+  <script src="js/et-quick-build.js?v=20261026-cell-dismiss"></script>
+  <script src="js/et-skills.js?v=20261026-record"></script>
+  <script src="js/et-legacy-ai.js?v=20261026-no-mask"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
