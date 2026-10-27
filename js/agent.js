@@ -105,11 +105,21 @@
 
   function renderEtRecommendations(s) {
     var welcome = s.view && s.view.welcomeEl;
-    if (s.type === 'et' && s.recommendationKind === 'record') { renderRecordingWelcome(s); return; }
+    if (s.type !== 'et' || !welcome) return;
+    if (s.recommendationKind === 'record') { welcome.classList.remove('is-expert-welcome'); renderRecordingWelcome(s); return; }
+    var finalExperts = window.EtExperts && EtExperts.isFinal();
     var items = ET_RECOMMENDATIONS[s.recommendationKind];
-    if (s.type !== 'et' || !welcome || !items) return;
+    if (!items && finalExperts) { EtExperts.renderWelcome(welcome, s.tabId); return; }
     welcome.classList.remove('is-record-welcome');
-    welcome.innerHTML = '<div class="ag-mascot">' + icon('lingxi_logo_m', 48) + '</div><h3>' + window.AGENT_SCRIPTS.et.welcome + '</h3><div class="ag-try">你可以试试</div>';
+    welcome.classList.toggle('is-expert-welcome', !!finalExperts);
+    welcome.innerHTML = (finalExperts ? EtExperts.welcomeHeader(s.tabId) : '<div class="ag-mascot">' + icon('lingxi_logo_m', 48) + '</div><h3>' + window.AGENT_SCRIPTS.et.welcome + '</h3>') + '<div class="ag-try">你可以试试</div>';
+    if (!items) {
+      window.AGENT_SCRIPTS.et.cards.forEach(function (c) {
+        var card = el('<div class="ag-card"><span class="ag-card-icon">' + icon(c.icon, 16) + '</span><span class="ag-card-title">' + c.title + '</span><span class="ag-card-desc">' + c.desc + '</span></div>');
+        card.addEventListener('click', function () { send(s, c.title); }); welcome.appendChild(card);
+      });
+      return;
+    }
     items.forEach(function (item) {
       var card = document.createElement('button');
       card.type = 'button'; card.className = 'ag-card ag-capability-card';
@@ -251,6 +261,7 @@
     });
     view.send.addEventListener('click', function () { trySend(s); });
     if (tab.type === 'et' && window.EtSkills) EtSkills.mount(aside, tab);
+    if (tab.type === 'et' && window.EtExperts) EtExperts.mountSidebar(aside, tab);
   };
 
   /* 折叠 / 展开（#btn-lingxi 与栏内折叠按钮共用） */
@@ -400,6 +411,18 @@
     return true;
   };
 
+  /* 专家变更只刷新欢迎区，保留输入草稿、历史消息与侧栏开合。 */
+  Agent.refreshEtExpert = function (tabId, resetHome) {
+    var tab = tabById(tabId); if (!tab || tab.type !== 'et') return;
+    var s = sessionOf(tab); if (resetHome) s.recommendationKind = '';
+    renderEtRecommendations(s);
+  };
+  Agent.fillEtSuggestion = function (tabId, text) {
+    var tab = tabById(tabId); if (!tab || tab.type !== 'et') return;
+    var s = sessionOf(tab); if (!s.view || s.processing) return;
+    setInputText(s, text); syncFromInput(s); focusInputEnd(s);
+  };
+
   /* ET Ribbon 能力入口：打开灵犀、准备可编辑提示词，不触发发送。 */
   Agent.prepareEtCapability = function (kind) {
     var tab = tabById(App.activeId);
@@ -416,6 +439,7 @@
     if (s.collapsed) Agent.toggle();
     if (!s.view) return;
     if (ET_RECOMMENDATIONS[kind]) { s.recommendationKind = kind; renderEtRecommendations(s); }
+    else if (kind === 'assistant' && window.EtExperts && EtExperts.isFinal()) { s.recommendationKind = ''; renderEtRecommendations(s); }
     if (!s.processing) {
       s.entryPlaceholder = kind === 'analysis' ? '想了解哪些数据？试试描述要分析的指标、维度或趋势。' : '';
       if (kind !== 'assistant' && kind !== 'analysis') setInputText(s, prompts[kind]);
@@ -1190,6 +1214,7 @@
     s.processing = false;
     s.messages = [];
     s.sidebarDraft = ''; s.sidebarHTML = ''; // 连选区 chip 一起清空
+    if (s.type === 'et' && window.EtExperts && EtExperts.isFinal()) { s.recommendationKind = ''; s.entryPlaceholder = ''; }
     var tab = App.tabs.filter(function (t) { return t.id === App.activeId; })[0];
     if (tab && s.view) Agent.mount(s.view.aside, tab);
   }
