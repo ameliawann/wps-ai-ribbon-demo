@@ -39,7 +39,7 @@
   function portrait(e,size){return '<span class="et-expert-avatar et-expert-avatar-'+e.id+' '+(size||'')+'" role="img" aria-label="'+e.name+'头像"></span>';}
   function arrow(){return window.icon('arrow_down_s',12);}
   function mainButton(e,composer){return '<button type="button" class="'+(composer?'et-expert-composer-main':'rb-large-split-main')+'" data-et-ai-capability="assistant" aria-label="打开'+e.name+'" title="打开灵犀">'+(composer?portrait(e,'is-small')+'<span>'+e.name+'</span>':'<span class="rb-large-icon">'+portrait(e)+'</span>')+'</button>';}
-  function triggerButton(e,composer){return '<button type="button" class="'+(composer?'et-expert-composer-menu':'rb-large-split-menu')+'" data-et-expert-trigger="'+(composer?'composer':'ribbon')+'" aria-label="'+(composer?'输入框':'功能区')+'专家库：'+e.name+'" aria-haspopup="menu" aria-expanded="false" aria-controls="et-expert-menu">'+(composer?'<span>专家库</span>'+arrow():'<span class="rb-large-label">'+e.name+arrow()+'</span>')+'</button>';}
+  function triggerButton(e,composer){return '<button type="button" class="'+(composer?'et-expert-composer-menu':'rb-large-split-menu')+'" data-et-expert-trigger="'+(composer?'composer':'ribbon')+'" aria-label="'+(composer?'输入框':'功能区')+'专家库：'+e.name+'" aria-haspopup="menu" aria-expanded="false" aria-controls="et-expert-menu">'+(composer?portrait(e,'is-small')+'<span>'+e.name+'</span>'+arrow():'<span class="rb-large-label">'+e.name+arrow()+'</span>')+'</button>';}
   function renderEntry(){
     if(!root||!tab)return;
     var group=root.querySelector('.rb-et-assistant');if(!group)return;
@@ -55,7 +55,7 @@
       if(old.classList.contains('et-expert-composer')){var t=document.createElement('template');t.innerHTML=normalMode;old.replaceWith(t.content.firstChild);}
       return;
     }
-    var e=ensureDocument(doc),box=document.createElement('div');box.className='et-expert-composer';box.setAttribute('role','group');box.setAttribute('aria-label','输入框当前专家');box.innerHTML=mainButton(e,true)+triggerButton(e,true);old.replaceWith(box);
+    var e=ensureDocument(doc),box=document.createElement('div');box.className='et-expert-composer';box.setAttribute('role','group');box.setAttribute('aria-label','输入框当前专家');box.innerHTML=triggerButton(e,true);old.replaceWith(box);
   }
   function syncAll(resetWelcome){
     renderEntry();if(root&&tab){renderComposer(root.querySelector('.agent-sidebar'),tab);if(window.Agent&&Agent.refreshEtExpert)Agent.refreshEtExpert(tab.id,resetWelcome);}
