@@ -40,6 +40,52 @@
     return t.content.firstChild;
   }
 
+  /* ET 能力入口的推荐指令；点击推荐仅回填，不自动发送。 */
+  var ET_RECOMMENDATIONS = {
+    clean: [
+      ['检查重复', '按订单编号检查重复记录，并标记出来'],
+      ['处理空值', '检查缺失信息，列出需要补充的字段和记录'],
+      ['统一格式', '将日期和金额统一为一致的格式'],
+      ['整理杂乱文本', '清理文本中的多余空格、换行和无效字符']
+    ],
+    analysis: [
+      ['看整体表现', '汇总销售额、订单数和客单价，概括整体表现'],
+      ['看变化趋势', '按月分析销售额变化，找出明显增长或下滑的月份'],
+      ['做维度对比', '比较各地区的销售表现，找出主要差异'],
+      ['找异常数据', '检查金额和数量异常的记录，并说明判断依据']
+    ],
+    chart: [
+      ['展示趋势', '按月汇总销售额，生成折线图展示变化趋势'],
+      ['比较高低', '生成柱状图，比较各产品的销售额'],
+      ['展示占比', '展示各渠道的销售额占比，突出主要渠道'],
+      ['帮我选图', '根据这份数据推荐合适的图表，并生成图表']
+    ],
+    beautify: [
+      ['日常报表', '统一表头、字体和数字格式，让表格清晰易读'],
+      ['汇报展示', '调整配色和排版，突出关键指标与汇总行'],
+      ['优化阅读', '调整行高列宽、对齐和换行，解决内容显示不全'],
+      ['突出重点', '弱化明细、突出小计和合计，让数据层次更清楚']
+    ]
+  };
+  function renderEtRecommendations(s) {
+    var welcome = s.view && s.view.welcomeEl;
+    var items = ET_RECOMMENDATIONS[s.recommendationKind];
+    if (s.type !== 'et' || !welcome || !items) return;
+    welcome.querySelectorAll('.ag-card').forEach(function (card) { card.remove(); });
+    items.forEach(function (item) {
+      var card = document.createElement('button');
+      card.type = 'button'; card.className = 'ag-card ag-capability-card';
+      var title = document.createElement('span'); title.className = 'ag-card-title'; title.textContent = item[0];
+      var desc = document.createElement('span'); desc.className = 'ag-card-desc'; desc.textContent = item[1];
+      card.appendChild(title); card.appendChild(desc);
+      card.addEventListener('click', function () {
+        if (s.processing) return;
+        setInputText(s, item[1]); syncFromInput(s); focusInputEnd(s);
+      });
+      welcome.appendChild(card);
+    });
+  }
+
   /* 挂载 / 重挂载侧边栏（editors.js 每次渲染编辑器时调用） */
   Agent.mount = function (aside, tab) {
     var s = sessionOf(tab);
@@ -116,6 +162,7 @@
         view.welcomeEl.appendChild(card);
       });
       view.body.appendChild(view.welcomeEl);
+      renderEtRecommendations(s);
     } else {
       view.msgsEl = el('<div class="ag-msgs"></div>');
       view.anchor = el('<div class="ag-anchor"></div>');
@@ -327,6 +374,7 @@
     var s = sessionOf(tab);
     if (s.collapsed) Agent.toggle();
     if (!s.view) return;
+    if (ET_RECOMMENDATIONS[kind]) { s.recommendationKind = kind; renderEtRecommendations(s); }
     if (!s.processing) {
       s.entryPlaceholder = kind === 'analysis' ? '想了解哪些数据？试试描述要分析的指标、维度或趋势。' : '';
       if (kind !== 'assistant' && kind !== 'analysis') setInputText(s, prompts[kind]);

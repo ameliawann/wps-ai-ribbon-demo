@@ -303,3 +303,8 @@
   font-size: var(--kd-font-size-small);
   color: var(--kd-color-text-tertiary);
 }
+
+/* ET 能力推荐显示完整指令，沿用现有推荐卡片的组件样式。 */
+.ag-welcome .ag-capability-card { width: 100%; box-sizing: border-box; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left; font-family: inherit; }
+.ag-welcome .ag-capability-card .ag-card-desc { white-space: normal; overflow: visible; text-overflow: clip; line-height: var(--kd-line-height-small); }
+.ag-capability-card:focus-visible { outline: 1px solid var(--kd-color-line-public); outline-offset: 2px; }
