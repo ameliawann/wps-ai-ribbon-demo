@@ -45,7 +45,7 @@
     var group=root.querySelector('.rb-et-assistant');if(!group)return;
     var content=group.querySelector('.rb-group-content');
     if(mode==='transition'){content.innerHTML=originalContent;group.querySelector('.rb-group-label').textContent='智能助手';}
-    else{var e=active();content.innerHTML='<div class="rb-large-split rb-et-expert-split" role="group" aria-label="'+e.name+'">'+mainButton(e,false)+triggerButton(e,false)+'</div>';group.querySelector('.rb-group-label').textContent='推荐专家';}
+    else{var e=active();content.innerHTML='<div class="rb-large-split rb-et-expert-split" role="group" aria-label="'+e.name+'">'+mainButton(e,false)+triggerButton(e,false)+'</div>';group.querySelector('.rb-group-label').textContent='智能助手';}
     root.querySelectorAll('[data-expert-scheme]').forEach(function(btn){var on=btn.getAttribute('data-expert-scheme')===mode;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',String(on));});
   }
   function renderComposer(aside,doc){
