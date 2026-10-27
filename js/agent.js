@@ -449,6 +449,12 @@
 
   function paintCanvasDraft(s) {
     if (!s.view) return;
+    /* ET 的画布输入独立存在，不隐藏、不替换侧边栏输入。 */
+    if (s.type === 'et') {
+      s.view.canvasRef.hidden = true;
+      s.view.inputCard.classList.remove('is-canvas-card');
+      return;
+    }
     var d = s.canvasDraft;
     /* 输入框唯一性：焦点此刻落在画布输入框里，同一时刻就只留那一个可输入位置 ——
        侧边栏卡片降级为「正在编辑 xx」引用卡（textarea/工具行隐藏）。

@@ -372,9 +372,8 @@
     }
     if (!cell) return;
     var rect = cell.getBoundingClientRect();
-    /* 侧边栏正在写着话 → 入口变「把选区加进去」，不再另起一个画布输入框 */
-    var appendMode = tab.type === 'et' && !!(window.Agent && Agent.hasSidebarInput && Agent.hasSidebarInput(tab.id));
-    tblBtnEl = el('<div class="lui-tbl-btn' + (tab.type === 'et' ? ' lui-et-tbl-btn' : '') + '">' + (tab.type === 'et' ? etIconEntryHtml(appendMode) : aiEntryHtml()) + '</div>');
+    /* 表格圈选入口固定为灵犀头像，独立打开画布输入框。 */
+    tblBtnEl = el('<div class="lui-tbl-btn' + (tab.type === 'et' ? ' lui-et-tbl-btn' : '') + '">' + (tab.type === 'et' ? etIconEntryHtml() : aiEntryHtml()) + '</div>');
     document.body.appendChild(tblBtnEl);
     tblBtnEl.style.left = Math.max(8, Math.min(rect.right + 6, window.innerWidth - tblBtnEl.offsetWidth - 8)) + 'px';
     var entryTop = rect.bottom + 6;
@@ -387,13 +386,6 @@
         ? { type: 'table', text: '', blockIdx: bi, start: 0, end: 0,
             tblRange: { r1: rng.r1, c1: rng.c1, r2: rng.r2, c2: rng.c2 }, rect: rect }
         : (Editors.getContext(tab) || fallbackCtx()); // et: 直接取 cells ctx（含 range/a1Start/rect）
-      if (appendMode && window.Agent && Agent.appendRefChip && Agent.appendRefChip(tab.id, ctx)) {
-        /* 这块选区已经用过了，入口就此收起（复用「已发送」标记，避免 mouseup 立刻又把它建出来） */
-        closeHoverTip();
-        tab.doc.etAiSentKey = etContextKey(ctx);
-        closeTblBtn();
-        return;
-      }
       openBar(ctx, '');
     });
   };
@@ -526,10 +518,8 @@
     return '<span class="lui-ai-btn">' + icon('lingxi_logo_m', 16) + '<span class="lui-ai-label">编辑</span></span>';
   }
 
-  /* 追加态：侧边栏输入框里已有内容时的入口形态 —— 对话气泡里一个加号
-     （kdicon `bubble_add_three`，语义「新话题/气泡/添加」），点一下把选区加到那句话后面。 */
-  function etIconEntryHtml(appendMode) {
-    if (appendMode) return '<button type="button" class="lui-ai-btn lui-et-entry is-append" aria-label="把选区添加到侧边栏输入" title="把选区添加到侧边栏输入">' + icon('bubble_add_three', 16) + '</button>';
+  /* 灵犀头像始终打开画布输入框，与侧边栏开合和草稿无关。 */
+  function etIconEntryHtml() {
     return '<button type="button" class="lui-ai-btn lui-et-entry" aria-label="AI 编辑">' + icon('lingxi_logo_m', 16) + '</button>';
   }
 
@@ -558,10 +548,9 @@
       hoverTimer = setTimeout(function () {
         hoverTimer = null;
         if (!anchor.isConnected) return;
-        var appendTip = anchor.classList.contains('is-append');
         hoverTipEl = el('<div class="lui-entry-tip" role="tooltip">' +
-          '<div class="lui-entry-tip-title">' + (appendTip ? '添加选区' : 'AI 编辑') + '</div>' +
-          '<div class="lui-entry-tip-desc">' + (appendTip ? '把这块选区加到侧边栏正在输入的这句话后面' : '选中区域后，用一句话让 AI 帮你处理') + '</div>' +
+          '<div class="lui-entry-tip-title">' + 'AI 编辑' + '</div>' +
+          '<div class="lui-entry-tip-desc">' + '选中区域后，用一句话让 AI 帮你处理' + '</div>' +
           '<div class="lui-entry-tip-sep"></div>' +
           '<div class="lui-entry-setting">' + icon('setup', 16) + '<span>设置</span>' + icon('arrow_right_s', 12) +
             '<div class="lui-entry-submenu"><button type="button" data-close-et-entry>关闭快捷入口</button>' +
@@ -700,7 +689,7 @@
     var draft = cur.tab.type === 'et' && cur.tab.doc.etAiDraft && cur.tab.doc.etAiDraft.key === etContextKey(ctx)
       ? cur.tab.doc.etAiDraft.text : '';
     input.value = prefill || draft || '';
-    /* 「输入框已唤起」本身就通知侧边栏：焦点此刻在画布，哪怕还没打字，侧边栏也降级为引用卡 */
+    /* 只记录画布输入状态，侧边栏草稿和输入框形态保持原状。 */
     if (cur.tab.type === 'et' && window.Agent && Agent.beginCanvasInput) Agent.beginCanvasInput(cur.tab.id, ctx, input.value);
     sendBtn.disabled = !input.value.trim();
     autoGrowInput(input);

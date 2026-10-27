@@ -2599,7 +2599,6 @@ AndPrintQat</desc><style>
 /* 表格 AI Ribbon：命令及灰色分组说明沿用「开始」样式。改功能顺序看下方 section。 */
 .rb-et-ai { overflow-x: auto; }
 .rb-et-ai .rb-body { width: max-content; min-width: 100%; box-sizing: border-box; justify-content: flex-start; }
-.rb-et-ai .rb-et-assistant { margin-left: auto; }
 .rb-et-ai .rb-group { flex: 0 0 auto; }
 /* 命令区共用底部基线：大按钮底部对齐第二行命令，灰字沿用 rb-group-label。 */
 .rb-et-ai .rb-group-content { min-height: 60px; align-items: flex-end; }
@@ -2631,6 +2630,19 @@ AndPrintQat</desc><style>
 .rb-et-ai .rb-et-clean-tip-title { font-weight: var(--kd-font-weight-bold); margin-bottom: 4px; }
 </style>
 <div class="rb-body" role="toolbar" aria-label="WPS AI">
+<section class="rb-group rb-et-assistant" aria-label="AI 表格助手"><div class="rb-group-content"><button type="button" class="rb-large" title="AI 表格助手" aria-label="AI 表格助手" data-et-ai-capability="assistant"><span class="rb-large-icon"><span class="rb-icon rb-icon-24" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>AI分析助理_智能分析</desc><style>
+    .kd-stroke-width-icon-regular { 
+       stroke-width: var(--kd-stroke-width-icon-regular, 1px)
+    }
+    .kd-color-icon-primary {
+       fill: var(--kd-color-icon-primary, #333333);
+       stroke: var(--kd-color-icon-primary, #333333);
+       km_fill: #333333;
+       km_stroke: #333333;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }</style><g id="etassistant-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etassistant-area1" d="M2.5 3.22222C2.5 2.82335 2.82335 2.5 3.22222 2.5H8.77778C9.17665 2.5 9.5 2.82335 9.5 3.22222V20.7778C9.5 21.1767 9.17665 21.5 8.77778 21.5H3.22222C2.82335 21.5 2.5 21.1767 2.5 20.7778V3.22222Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etassistant-area1_2" d="M14.5 11.2222C14.5 10.8234 14.8233 10.5 15.2222 10.5H20.7778C21.1766 10.5 21.5 10.8233 21.5 11.2222V20.7778C21.5 21.1766 21.1767 21.5 20.7778 21.5H15.2222C14.8234 21.5 14.5 21.1767 14.5 20.7778V11.2222Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="etassistant-group-1" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etassistant-Subtract" d="M18 1.5C18.1059 1.5 18.1948 1.57894 18.2194 1.68191C18.3266 2.1315 18.3907 2.37982 18.4898 2.59922C18.7726 3.2248 19.2741 3.72604 19.8996 4.00898C20.1187 4.10807 20.3669 4.1721 20.8157 4.27914C20.9194 4.30387 21 4.3934 21 4.5C21 4.60589 20.9199 4.69485 20.8169 4.71946C20.3673 4.82689 20.1189 4.89183 19.8996 4.99102C19.2741 5.27396 18.7726 5.7752 18.4898 6.40078C18.3908 6.61999 18.3265 6.86802 18.2194 7.31686C18.1948 7.41986 18.1059 7.5 18 7.5C17.8934 7.5 17.8039 7.41941 17.7792 7.31572C17.6725 6.86772 17.6091 6.61977 17.5102 6.40078C17.2274 5.7752 16.7259 5.27396 16.1004 4.99102C15.8809 4.89175 15.6323 4.82699 15.1819 4.71943C15.0789 4.69484 15 4.60585 15 4.5C15 4.39344 15.0794 4.30387 15.183 4.27916C15.6326 4.172 15.8811 4.10815 16.1004 4.00898C16.7259 3.72604 17.2274 3.2248 17.5102 2.59922C17.6092 2.38004 17.6724 2.1318 17.7792 1.68305C17.8039 1.57939 17.8934 1.5 18 1.5Z" stroke="none"/></g></svg></span></span><span class="rb-large-label">AI 表格助手</span></button></div><div class="rb-group-label" aria-hidden="true">&nbsp;</div></section>
+<div class="rb-divider-v" aria-hidden="true"></div>
 <section class="rb-group" aria-label="流程复用"><div class="rb-group-content"><button type="button" class="rb-large" title="录制技能" aria-label="录制技能" data-et-skill-entry="record"><span class="rb-large-icon"><span class="rb-icon rb-icon-24" aria-hidden="true" data-icon="record_macro_24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>录制新宏24_RecordMacro</desc><style>
     .kd-stroke-width-icon-regular { 
        stroke-width: var(--kd-stroke-width-icon-regular, 1px)
@@ -2874,18 +2886,7 @@ AndPrintQat</desc><style>
        km_darkmode_fill: #C7C7C7;
        km_darkmode_stroke: #C7C7C7; 
     }</style><g id="et-ai-settings-group-1" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="et-ai-settings-line" d="M10.5722 2.5H13.4315L14.6468 5.54096C15.0478 5.73235 15.4263 5.96593 15.7771 6.23622L19.074 5.76076L20.5037 8.2393L18.3267 11.0085C18.3399 11.1827 18.3467 11.3302 18.3467 11.5366C18.3467 11.7167 18.3416 11.8453 18.3314 11.9976L20.5037 14.7608L19.0741 17.2393L15.8558 16.7752C15.4729 17.08 15.0555 17.3404 14.6108 17.5491L13.4316 20.5H10.5723L9.39305 17.5492C8.94835 17.3405 8.53095 17.08 8.14795 16.7752L4.9297 17.2393L3.50005 14.7608L5.67232 11.9976C5.6622 11.8453 5.65705 11.6915 5.65705 11.5366C5.65705 11.3588 5.66381 11.1828 5.67709 11.0086L3.5 8.23931L4.92966 5.76078L8.22665 6.23624C8.5774 5.96596 8.95591 5.73239 9.35692 5.54099L10.5722 2.5Z" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="et-ai-settings-line_2" d="M14.5 11.5C14.5 12.8807 13.3807 14 12 14C10.6193 14 9.5 12.8807 9.5 11.5C9.5 10.1193 10.6193 9 12 9C13.3807 9 14.5 10.1193 14.5 11.5Z" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/></g></svg></span></span><span class="rb-large-label">设置</span></button></div><div class="rb-group-label">设置</div></section>
-<section class="rb-group rb-et-assistant" aria-label="AI 表格助手"><div class="rb-group-content"><button type="button" class="rb-large" title="AI 表格助手" aria-label="AI 表格助手" data-et-ai-capability="assistant"><span class="rb-large-icon"><span class="rb-icon rb-icon-24" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>AI分析助理_智能分析</desc><style>
-    .kd-stroke-width-icon-regular { 
-       stroke-width: var(--kd-stroke-width-icon-regular, 1px)
-    }
-    .kd-color-icon-primary {
-       fill: var(--kd-color-icon-primary, #333333);
-       stroke: var(--kd-color-icon-primary, #333333);
-       km_fill: #333333;
-       km_stroke: #333333;
-       km_darkmode_fill: #C7C7C7;
-       km_darkmode_stroke: #C7C7C7; 
-    }</style><g id="etassistant-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etassistant-area1" d="M2.5 3.22222C2.5 2.82335 2.82335 2.5 3.22222 2.5H8.77778C9.17665 2.5 9.5 2.82335 9.5 3.22222V20.7778C9.5 21.1767 9.17665 21.5 8.77778 21.5H3.22222C2.82335 21.5 2.5 21.1767 2.5 20.7778V3.22222Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etassistant-area1_2" d="M14.5 11.2222C14.5 10.8234 14.8233 10.5 15.2222 10.5H20.7778C21.1766 10.5 21.5 10.8233 21.5 11.2222V20.7778C21.5 21.1766 21.1767 21.5 20.7778 21.5H15.2222C14.8234 21.5 14.5 21.1767 14.5 20.7778V11.2222Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="etassistant-group-1" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etassistant-Subtract" d="M18 1.5C18.1059 1.5 18.1948 1.57894 18.2194 1.68191C18.3266 2.1315 18.3907 2.37982 18.4898 2.59922C18.7726 3.2248 19.2741 3.72604 19.8996 4.00898C20.1187 4.10807 20.3669 4.1721 20.8157 4.27914C20.9194 4.30387 21 4.3934 21 4.5C21 4.60589 20.9199 4.69485 20.8169 4.71946C20.3673 4.82689 20.1189 4.89183 19.8996 4.99102C19.2741 5.27396 18.7726 5.7752 18.4898 6.40078C18.3908 6.61999 18.3265 6.86802 18.2194 7.31686C18.1948 7.41986 18.1059 7.5 18 7.5C17.8934 7.5 17.8039 7.41941 17.7792 7.31572C17.6725 6.86772 17.6091 6.61977 17.5102 6.40078C17.2274 5.7752 16.7259 5.27396 16.1004 4.99102C15.8809 4.89175 15.6323 4.82699 15.1819 4.71943C15.0789 4.69484 15 4.60585 15 4.5C15 4.39344 15.0794 4.30387 15.183 4.27916C15.6326 4.172 15.8811 4.10815 16.1004 4.00898C16.7259 3.72604 17.2274 3.2248 17.5102 2.59922C17.6092 2.38004 17.6724 2.1318 17.7792 1.68305C17.8039 1.57939 17.8934 1.5 18 1.5Z" stroke="none"/></g></svg></span></span><span class="rb-large-label">AI 表格助手</span></button></div><div class="rb-group-label" aria-hidden="true">&nbsp;</div></section>
+
 </div>
 <ul class="kd-menu rb-et-ai-menu" id="et-ai-clean-menu" role="menu" aria-label="AI 数据清洗" hidden><li role="none"><button type="button" class="kd-menu-item" role="menuitem" tabindex="-1" data-et-ai-clean-action><span class="kd-menu-item-icon"><span class="rb-icon rb-icon-16" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>棒_美化_魔法棒_仙女棒_美化助手16_beautification_assistant</desc><style>
     .kd-stroke-width-icon-regular { 
