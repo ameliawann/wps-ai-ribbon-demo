@@ -67,11 +67,49 @@
       ['突出重点', '弱化明细、突出小计和合计，让数据层次更清楚']
     ]
   };
+  var ET_RECORD_ICONS = {"play": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>播放</desc><style>\n    .kd-stroke-width-icon-regular { \n       stroke-width: var(--kd-stroke-width-icon-regular, 1px)\n    }\n    .kd-color-icon-primary {\n       fill: var(--kd-color-icon-primary, #333333);\n       stroke: var(--kd-color-icon-primary, #333333);\n       km_fill: #333333;\n       km_stroke: #333333;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }\n    .kd-color-icon-orange-primary {\n       fill: var(--kd-color-icon-orange-primary, #BF5513);\n       stroke: var(--kd-color-icon-orange-primary, #BF5513);\n       km_fill: #BF5513;\n       km_stroke: #BF5513;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }\n    .kd-color-icon-orange-quaternary {\n       fill: var(--kd-color-icon-orange-quaternary, #FDE0CE);\n       stroke: var(--kd-color-icon-orange-quaternary, #FDE0CE);\n       km_fill: #FDE0CE;\n       km_stroke: #FDE0CE;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"group-2\" class=\"kd-color-icon-orange-quaternary kd-stroke-width-icon-regular\"><path id=\"fill\" d=\"M6.5 10.482V5.51804C6.5 5.51019 6.50864 5.5054 6.5153 5.50956L10.4864 7.99152C10.4927 7.99544 10.4927 8.00456 10.4864 8.00848L6.5153 10.4904C6.50864 10.4946 6.5 10.4898 6.5 10.482Z\" stroke=\"none\"/></g><g id=\"group-1\" class=\"kd-color-icon-orange-primary kd-stroke-width-icon-regular\"><path id=\"line\" d=\"M6.5 10.482V5.51804C6.5 5.51019 6.50864 5.5054 6.5153 5.50956L10.4864 7.99152C10.4927 7.99544 10.4927 8.00456 10.4864 8.00848L6.5153 10.4904C6.50864 10.4946 6.5 10.4898 6.5 10.482Z\" stroke-linecap=\"round\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/></g><g id=\"group-0\" class=\"kd-color-icon-primary kd-stroke-width-icon-regular\"><path id=\"line_2\" d=\"M1.5 3C1.5 2.72386 1.72386 2.5 2 2.5H14C14.2761 2.5 14.5 2.72386 14.5 3V13C14.5 13.2761 14.2761 13.5 14 13.5H2C1.72386 13.5 1.5 13.2761 1.5 13V3Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/></g></svg>", "mouse": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>鼠标_指针_选择</desc><style>\n    .kd-stroke-width-icon-regular { \n       stroke-width: var(--kd-stroke-width-icon-regular, 1px)\n    }\n    .kd-color-icon-primary {\n       fill: var(--kd-color-icon-primary, #333333);\n       stroke: var(--kd-color-icon-primary, #333333);\n       km_fill: #333333;\n       km_stroke: #333333;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"group-0\" class=\"kd-color-icon-primary kd-stroke-width-icon-regular\"><path id=\"line\" d=\"M4.85442 12.5217L1.50546 1.51794C1.50313 1.51028 1.51028 1.50313 1.51794 1.50546L12.5217 4.85442C12.7383 4.92036 12.8066 5.19341 12.6464 5.35355L10 8L14.1464 12.1464C14.3417 12.3417 14.3417 12.6583 14.1464 12.8536L12.8536 14.1464C12.6583 14.3417 12.3417 14.3417 12.1464 14.1464L8 10L5.35355 12.6464C5.19341 12.8066 4.92036 12.7383 4.85442 12.5217Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/></g></svg>", "save": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>保存</desc><style>\n    .kd-stroke-width-icon-regular { \n       stroke-width: var(--kd-stroke-width-icon-regular, 1px)\n    }\n    .kd-color-icon-primary {\n       fill: var(--kd-color-icon-primary, #333333);\n       stroke: var(--kd-color-icon-primary, #333333);\n       km_fill: #333333;\n       km_stroke: #333333;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"group-0\" class=\"kd-color-icon-primary kd-stroke-width-icon-regular\"><path id=\"line\" d=\"M1.5 2V14C1.5 14.2761 1.72386 14.5 2 14.5H14C14.2761 14.5 14.5 14.2761 14.5 14V5.40719C14.5 5.27458 14.4473 5.1474 14.3536 5.05364L10.9464 1.64645C10.8527 1.55268 10.7255 1.5 10.5929 1.5H2C1.72386 1.5 1.5 1.72386 1.5 2Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/><path id=\"line_2\" d=\"M5.5 5.5H8.5\" stroke-linecap=\"round\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/><path id=\"line_3\" d=\"M5.5 14.5L5.5 10C5.5 9.72386 5.72386 9.5 6 9.5H10C10.2761 9.5 10.5 9.72386 10.5 10V14.5\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/></g></svg>", "arrow_right_s": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" kd_rtl=\"mirror\" requiredCustomFeatures=\"data-kd-color-scheme,data-kd-rtl-mirror-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>右箭头_小</desc><style>\n    .kd-stroke-width-icon-bold { \n       stroke-width: var(--kd-stroke-width-icon-bold, 1.2px)\n    }\n    .kd-color-icon-secondary {\n       fill: var(--kd-color-icon-secondary, #757575);\n       stroke: var(--kd-color-icon-secondary, #757575);\n       km_fill: #757575;\n       km_stroke: #757575;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"group-0\" class=\"kd-color-icon-secondary kd-stroke-width-icon-bold\"><path id=\"area1\" d=\"M6.5 4L10 7.99282V8.00738L6.5 12\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" vector-effect=\"non-scaling-stroke\"/></g></svg>"};
+  var recordIconSequence = 0;
+  function recordingIcon(name) {
+    var raw = ET_RECORD_ICONS[name], suffix = '-record-welcome-' + (++recordIconSequence);
+    var ids = []; raw.replace(/\bid="([^"]+)"/g, function (_, id) { ids.push(id); });
+    ids.sort(function (a,b) { return b.length-a.length; }).forEach(function (id) {
+      raw = raw.split('id="'+id+'"').join('id="'+id+suffix+'"').split('#'+id+'"').join('#'+id+suffix+'"').split('#'+id+')').join('#'+id+suffix+')');
+    });
+    return '<span class="ag-record-icon" aria-hidden="true">'+raw+'</span>';
+  }
+  function renderRecordingWelcome(s) {
+    var welcome = s.view && s.view.welcomeEl;
+    if (!welcome) return;
+    welcome.classList.add('is-record-welcome');
+    welcome.innerHTML = '<section class="ag-record-guide" aria-label="录制技能说明"><div class="ag-record-title">'+recordingIcon('mouse')+'<h3>把重复操作，录成下次能直接用的技能</h3></div><p class="ag-record-description">开始录制后，像平时一样操作表格。我会理解你的操作步骤和数据处理规则，帮你保存成可复用的技能。</p><ol class="ag-record-steps"><li>'+recordingIcon('play')+'<strong>开始录制</strong><span>告诉我你想做什么</span></li><li>'+recordingIcon('mouse')+'<strong>操作表格</strong><span>正常完成你的工作</span></li><li>'+recordingIcon('save')+'<strong>保存技能</strong><span>下次一键复用</span></li></ol></section><section class="ag-record-work-section" aria-label="录制工作示例"><h4>不知道录什么？试试这些常见工作</h4><div class="ag-record-work-list"></div></section>';
+    [
+      ['每月整理销售明细','清除空行、统一格式、处理重复数据','整理每月销售明细：清除空行，统一格式，处理重复数据。'],
+      ['制作固定格式的月报','按部门汇总、计算指标、整理报表','制作固定格式的月报：按部门汇总数据，计算指标，整理报表。'],
+      ['重复的财务对账工作','核对明细、计算差异、整理结果','完成财务对账：核对明细，计算差异，整理对账结果。']
+    ].forEach(function (item) {
+      var button = document.createElement('button'); button.type = 'button'; button.className = 'ag-record-work';
+      var copy = document.createElement('span'); copy.className = 'ag-record-work-copy';
+      var title = document.createElement('strong'); title.textContent = item[0];
+      var desc = document.createElement('span'); desc.textContent = item[1];
+      copy.appendChild(title); copy.appendChild(desc); button.appendChild(copy);
+      button.insertAdjacentHTML('beforeend', recordingIcon('arrow_right_s'));
+      button.addEventListener('click', function () {
+        if (s.processing) return;
+        Agent.prepareRecordSkill(s.tabId, s.recordIconHTML || '');
+        s.view.input.appendChild(document.createTextNode(item[2]));
+        syncFromInput(s); focusInputEnd(s);
+      });
+      welcome.querySelector('.ag-record-work-list').appendChild(button);
+    });
+  }
+
   function renderEtRecommendations(s) {
     var welcome = s.view && s.view.welcomeEl;
+    if (s.type === 'et' && s.recommendationKind === 'record') { renderRecordingWelcome(s); return; }
     var items = ET_RECOMMENDATIONS[s.recommendationKind];
     if (s.type !== 'et' || !welcome || !items) return;
-    welcome.querySelectorAll('.ag-card').forEach(function (card) { card.remove(); });
+    welcome.classList.remove('is-record-welcome');
+    welcome.innerHTML = '<div class="ag-mascot">' + icon('lingxi_logo_m', 48) + '</div><h3>' + window.AGENT_SCRIPTS.et.welcome + '</h3><div class="ag-try">你可以试试</div>';
     items.forEach(function (item) {
       var card = document.createElement('button');
       card.type = 'button'; card.className = 'ag-card ag-capability-card';
@@ -341,6 +379,9 @@
     if (!tab || tab.type !== 'et') return false;
     var s = sessionOf(tab);
     if (!s.view || s.processing) return false;
+    s.recordIconHTML = iconHtml;
+    s.recommendationKind = 'record';
+    renderEtRecommendations(s);
     s.entryPlaceholder = '';
     setInputText(s, '');
     var input = s.view.input;
