@@ -1,0 +1,42 @@
+/* 专家库复用 KDesign Modal/Input/Button，以下只补充布局。 */
+.et-experts-scheme { bottom: 80px; }
+.et-expert-avatar { display: inline-block; width: 28px; height: 28px; border-radius: var(--kd-border-radius-middle); background-image: url('../assets/et-experts/avatars.png'); background-size: 300% 200%; background-repeat: no-repeat; flex-shrink: 0; }
+.et-expert-avatar-business { background-position: 0% 0%; }
+.et-expert-avatar-finance { background-position: 50% 0%; }
+.et-expert-avatar-clean { background-position: 100% 0%; }
+.et-expert-avatar-visual { background-position: 0% 100%; }
+.et-expert-avatar-hr { background-position: 50% 100%; }
+.et-expert-avatar-project { background-position: 100% 100%; }
+.et-expert-avatar.is-list { width: 40px; height: 40px; }
+.et-expert-avatar.is-profile { width: 64px; height: 64px; border-radius: var(--kd-border-radius-large); }
+.et-experts-layer .kd-modal { max-width: calc(100vw - 32px); }
+.et-experts-layer .kd-modal-content { max-width: 100%; max-height: calc(100vh - 32px); overflow-y: auto; }
+.et-experts-intro { padding: 8px 0 16px; color: var(--kd-color-text-secondary); font-size: var(--kd-font-size-sub-base); line-height: var(--kd-line-height-base); }
+.et-experts-layout { display: grid; grid-template-columns: 240px minmax(0,1fr); gap: 8px; }
+.et-experts-library { min-width: 0; }
+.et-experts-library-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.et-experts-library-heading h3, .et-experts-detail h4 { font-size: var(--kd-font-size-sub-base); font-weight: var(--kd-font-weight-bold); color: var(--kd-color-text-primary); margin: 0; line-height: 20px; }
+.et-experts-library-heading > span, .et-experts-current { font-size: var(--kd-font-size-small); color: var(--kd-color-text-secondary); }
+.et-experts-list { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+.et-experts-row { width: 100%; border: none; background: transparent; border-radius: var(--kd-border-radius-middle); display: flex; align-items: center; gap: 8px; padding: 8px; text-align: left; cursor: pointer; color: var(--kd-color-text-primary); }
+.et-experts-row:hover { background: var(--kd-color-state-hover); }
+.et-experts-row.is-selected { background: var(--kd-color-public-light); }
+.et-experts-row-copy { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.et-experts-row-copy strong { font-size: var(--kd-font-size-sub-base); font-weight: var(--kd-font-weight-regular); }
+.et-experts-row-copy small, .et-experts-recommend { font-size: var(--kd-font-size-small); color: var(--kd-color-text-secondary); }
+.et-experts-recommend { margin-left: auto; color: var(--kd-color-text-public); }
+.et-experts-detail { min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.et-experts-profile { display: flex; align-items: center; gap: 12px; }
+.et-experts-eyebrow { font-size: var(--kd-font-size-small); color: var(--kd-color-text-secondary); margin-bottom: 4px; }
+.et-experts-profile h3 { font-size: var(--kd-font-size-sub-base); font-weight: var(--kd-font-weight-bold); line-height: var(--kd-line-height-base); margin: 0; }
+.et-experts-profile p, .et-experts-detail section p, .et-experts-description, .et-experts-detail ul { font-size: var(--kd-font-size-sub-base); line-height: var(--kd-line-height-base); margin: 4px 0 0; color: var(--kd-color-text-secondary); }
+.et-experts-detail ul { padding-left: 20px; }
+.et-experts-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.et-experts-tags span { font-size: var(--kd-font-size-small); line-height: var(--kd-line-height-small); padding: 4px 8px; background: var(--kd-color-fill-light); border-radius: var(--kd-border-radius-small); color: var(--kd-color-text-secondary); }
+.et-experts-reason { display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: var(--kd-border-radius-middle); background: var(--kd-color-public-light); font-size: var(--kd-font-size-sub-base); line-height: var(--kd-line-height-base); color: var(--kd-color-text-primary); }
+.et-experts-reason strong { font-weight: var(--kd-font-weight-bold); }
+.et-experts-prompts { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; font-size: var(--kd-font-size-sub-base); line-height: var(--kd-line-height-base); color: var(--kd-color-text-secondary); }
+.et-experts-prompts > div { border: 1px solid var(--kd-color-line-light); padding: 8px 12px; border-radius: var(--kd-border-radius-middle); }
+.et-experts-empty { font-size: var(--kd-font-size-sub-base); color: var(--kd-color-text-secondary); padding: 16px 8px; }
+.et-experts-layer button:focus-visible { outline: 1px solid var(--kd-color-line-public); outline-offset: 2px; }
+@media (max-width: 640px) { .et-experts-layout { grid-template-columns: minmax(0,1fr); } .et-experts-list { max-height: 200px; overflow-y: auto; } .et-experts-layer .kd-modal-footer { flex-wrap: wrap; } }

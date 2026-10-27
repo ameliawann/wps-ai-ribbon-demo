@@ -1900,6 +1900,7 @@
 
     Agent.mount(root.querySelector('.agent-sidebar'), tab);
     if (tab.type === 'et' && window.EtSkills) EtSkills.initDemo(root);
+    if (tab.type === 'et' && window.EtExperts) EtExperts.init(root, tab);
     // ribbon 交互 + 宽度自适应 ladder（ribbon-ladder.js，移植自 wps-ribbon 原版）
     if (window.RibbonLadder) window.RibbonLadder.init(root, tab.type);
     // 文内 LUI（lui.js）：四组件激活；pendingAi/决策条状态在这里随重渲染恢复
