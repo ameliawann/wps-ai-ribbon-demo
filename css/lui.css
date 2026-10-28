@@ -587,3 +587,27 @@
 }
 /* 高亮与强调叠加时高亮优先（lui.css 后加载，覆盖上方 1px 描边） */
 .wpp-accent.ai-diff-el { box-shadow: 0 0 0 2px var(--kd-color-line-ai); }
+
+/* ET 画布输入：空态一级推荐位于输入框内，有输入仅显示发送。 */
+.lui-bar.lui-et-composer { width: 540px; }
+.lui-et-composer .lui-bar-card { min-height: 44px; box-sizing: border-box; padding: 6px 8px; gap: 4px; box-shadow: var(--kd-box-shadow-large); }
+.lui-et-add { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex: 0 0 28px; border: none; padding: 6px; border-radius: var(--kd-border-radius-middle); background: transparent; color: var(--kd-color-icon-secondary); cursor: pointer; }
+.lui-et-add:hover { background: var(--kd-color-state-hover); }
+.lui-et-icon { display: inline-flex; flex-shrink: 0; }
+.lui-et-icon svg { display: block; }
+.lui-et-composer .lui-bar-input { padding: 0 4px; box-sizing: border-box; line-height: var(--kd-line-height-base); }
+.lui-et-composer .lui-bar-send { width: 28px; height: 28px; margin-left: 4px; flex: 0 0 28px; }
+.lui-et-inline-chips { flex: 0 0 auto; margin-left: 12px; }
+.lui-et-inline-chips .lui-chip-list { gap: 6px; }
+.lui-et-inline-chips .lui-chip { gap: 4px; padding: 4px 10px; line-height: 20px; background: var(--kd-color-fill-light); color: var(--kd-color-text-primary); box-shadow: none; }
+.lui-et-inline-chips .lui-chip:hover { background: var(--kd-color-state-hover); }
+.lui-et-composer:not(.is-empty) .lui-et-inline-chips { display: none; }
+.lui-et-composer.has-recommendations.is-empty .lui-bar-send { display: none; }
+.lui-et-submenu { position: absolute; top: calc(100% + 4px); left: 0; z-index: var(--kd-z-index-popover); width: max-content; min-width: 160px; max-width: 100%; max-height: 280px; overflow-y: auto; box-sizing: border-box; margin: 0; }
+.lui-et-submenu[hidden] { display: none !important; }
+.lui-et-submenu.is-above { top: auto; bottom: calc(100% + 4px); }
+.lui-et-sub-item { width: 100%; align-items: center; gap: 6px; border: none; background: transparent; font-family: inherit; text-align: left; }
+.lui-et-sub-item:hover, .lui-et-sub-item:focus-visible { background: var(--kd-color-state-hover); }
+.lui-et-add:focus-visible { outline: 1px solid var(--kd-color-line-public); outline-offset: 2px; }
+.lui-et-file-note { margin-top: 4px; padding: 8px; background: var(--kd-color-fill-base); color: var(--kd-color-text-secondary); border-radius: var(--kd-border-radius-middle); font-size: var(--kd-font-size-small); line-height: var(--kd-line-height-small); }
+@media (max-width: 560px) { .lui-et-inline-chips { margin-left: 4px; } .lui-et-inline-chips .lui-chip { padding-left: 8px; padding-right: 8px; } }

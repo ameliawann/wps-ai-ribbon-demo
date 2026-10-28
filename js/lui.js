@@ -53,7 +53,7 @@
         { label: '更新目录', prompt: '更新目录', subs: ['同步标题变化', '修正页码'] },
       ],
     },
-    et: { // 表格 chips 均无二级推荐：点击只回填输入框、不留选中态（见 paintChips.keepSelState）
+    et: { // 表格推荐按选区生成，二级指令由 chipsForContext 统一补充。
       cells: [], // 10 月需求按选区形态动态给推荐，见 chipsForContext
       chart: [
         { label: '美化图表样式', prompt: '美化图表样式' },
@@ -184,7 +184,7 @@
     return 'cursor:' + (ctx.a1Start || '');
   }
 
-  function chipsForContext(ctx) {
+  function baseChipsForContext(ctx) {
     if (cur.tab.type !== 'et' || ctx.type !== 'cells') {
       return ((CHIPS[cur.tab.type] || {})[ctx.type] || (CHIPS[cur.tab.type] || {}).cursor);
     }
@@ -209,6 +209,47 @@
     return [
       { label: '清洗这块数据', prompt: '清洗这块数据' }, { label: '按条件标色', prompt: '按条件标色' },
     ];
+  }
+
+  var ET_CANVAS_ICONS = {"symbol_cross": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>加号l16_increase</desc><style>\n    .kd-stroke-width-icon-bold { \n       stroke-width: var(--kd-stroke-width-icon-bold, 1.2px)\n    }\n    .kd-color-icon-primary {\n       fill: var(--kd-color-icon-primary, #333333);\n       stroke: var(--kd-color-icon-primary, #333333);\n       km_fill: #333333;\n       km_stroke: #333333;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"group-0\" class=\"kd-color-icon-primary kd-stroke-width-icon-bold\"><path id=\"line\" d=\"M1.60156 7.59961H13.6016M7.60156 1.59961V13.5996\" stroke-linecap=\"round\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/></g></svg>", "arrow_up_tail_l": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>返回上级_左箭头_大号_上一级_返回_后退</desc><style>\n    .kd-stroke-width-icon-bold { \n       stroke-width: var(--kd-stroke-width-icon-bold, 1.2px)\n    }\n    .kd-color-icon-primary {\n       fill: var(--kd-color-icon-primary, #333333);\n       stroke: var(--kd-color-icon-primary, #333333);\n       km_fill: #333333;\n       km_stroke: #333333;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"group-0\" class=\"kd-color-icon-primary kd-stroke-width-icon-bold\"><path id=\"area1\" d=\"M7.5 15V1M7.5 1L12.5 5.74976M7.5 1L2.5 5.74976\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" vector-effect=\"non-scaling-stroke\"/></g></svg>", "ai_edit": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>笔_编辑</desc><style>\n    .kd-stroke-width-icon-regular { \n       stroke-width: var(--kd-stroke-width-icon-regular, 1px)\n    }\n    .kd-color-icon-primary {\n       fill: var(--kd-color-icon-primary, #333333);\n       stroke: var(--kd-color-icon-primary, #333333);\n       km_fill: #333333;\n       km_stroke: #333333;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"group-0\" class=\"kd-color-icon-primary kd-stroke-width-icon-regular\"><path id=\"line\" d=\"M10.3047 6.23047L12.6673 8.59313\" stroke-linejoin=\"round\" fill=\"none\" vector-effect=\"non-scaling-stroke\"/><path id=\"line_2\" d=\"M11.829 4.6688L5.02951 11.1047C4.74251 11.3764 4.54241 11.727 4.45449 12.1122L4.00442 14.0842C3.95529 14.2995 4.14768 14.4923 4.36304 14.4436L6.39867 13.9835C6.74729 13.9047 7.06842 13.7339 7.32866 13.489L14.148 7.06928C14.5587 6.68261 14.5685 6.03293 14.1697 5.63405L13.2236 4.68795C12.8406 4.30499 12.2224 4.2965 11.829 4.6688Z\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" vector-effect=\"non-scaling-stroke\"/></g><g id=\"group-1\" class=\"kd-color-icon-primary kd-stroke-width-icon-regular\"><path id=\"Subtract\" d=\"M3.5 3C3.58821 3 3.66236 3.06578 3.68281 3.15159C3.77213 3.52625 3.82562 3.73318 3.9082 3.91602C4.14383 4.43734 4.56176 4.85504 5.08301 5.09082C5.26559 5.17339 5.47246 5.22675 5.84644 5.31595C5.93285 5.33656 6 5.41117 6 5.5C6 5.58824 5.93322 5.66237 5.8474 5.68288C5.47271 5.77241 5.26578 5.82653 5.08301 5.90918C4.56176 6.14496 4.14383 6.56266 3.9082 7.08398C3.82569 7.26666 3.77205 7.47335 3.68284 7.84739C3.66236 7.93322 3.58824 8 3.5 8C3.41117 8 3.33657 7.93284 3.31599 7.84643C3.22711 7.4731 3.17423 7.26647 3.0918 7.08398C2.85617 6.56266 2.43823 6.14496 1.91699 5.90918C1.73407 5.82646 1.52688 5.77249 1.15158 5.68286C1.06578 5.66237 1 5.58821 1 5.5C1 5.4112 1.06616 5.33656 1.15253 5.31597C1.52714 5.22667 1.73425 5.17346 1.91699 5.09082C2.43824 4.85504 2.85617 4.43734 3.0918 3.91602C3.1743 3.73337 3.22703 3.5265 3.31601 3.15254C3.33657 3.06616 3.41121 3 3.5 3Z\" stroke=\"none\"/><path id=\"Subtract_2\" d=\"M7.5 0.5C7.57057 0.5 7.62989 0.552627 7.64625 0.62127C7.7177 0.920997 7.76049 1.08654 7.82656 1.23281C8.01506 1.64987 8.34941 1.98403 8.76641 2.17266C8.91247 2.23871 9.07797 2.2814 9.37715 2.35276C9.44628 2.36925 9.5 2.42894 9.5 2.5C9.5 2.5706 9.44658 2.6299 9.37792 2.6463C9.07817 2.71793 8.91262 2.76122 8.76641 2.82734C8.34941 3.01597 8.01506 3.35013 7.82656 3.76719C7.76055 3.91333 7.71764 4.07868 7.64627 4.37791C7.62989 4.44658 7.57059 4.5 7.5 4.5C7.42894 4.5 7.36925 4.44627 7.35279 4.37715C7.28169 4.07848 7.23938 3.91318 7.17344 3.76719C6.98494 3.35013 6.65059 3.01597 6.23359 2.82734C6.08725 2.76116 5.92151 2.71799 5.62126 2.64629C5.55262 2.62989 5.5 2.57057 5.5 2.5C5.5 2.42896 5.55292 2.36925 5.62203 2.35277C5.92171 2.28133 6.0874 2.23877 6.23359 2.17266C6.65059 1.98403 6.98494 1.64987 7.17344 1.23281C7.23944 1.0867 7.28162 0.921202 7.35281 0.622035C7.36925 0.552929 7.42896 0.5 7.5 0.5Z\" stroke=\"none\"/></g></svg>", "arrow_down_s": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>下箭头16_大_Pdf_spin_down</desc><style>\n    .kd-stroke-width-icon-bold { \n       stroke-width: var(--kd-stroke-width-icon-bold, 1.2px)\n    }\n    .kd-color-icon-secondary {\n       fill: var(--kd-color-icon-secondary, #757575);\n       stroke: var(--kd-color-icon-secondary, #757575);\n       km_fill: #757575;\n       km_stroke: #757575;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"group-0\" class=\"kd-color-icon-secondary kd-stroke-width-icon-bold\"><path id=\"area1\" d=\"M12 6.5L8.00718 10H7.99262L4 6.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\" vector-effect=\"non-scaling-stroke\"/></g></svg>"};
+  var etCanvasIconSequence = 0;
+  function etCanvasIcon(name) {
+    var raw = ET_CANVAS_ICONS[name], suffix = '-et-canvas-' + (++etCanvasIconSequence), ids = [];
+    raw.replace(/\bid="([^"]+)"/g, function (_, id) { ids.push(id); });
+    ids.sort(function (a,b) { return b.length-a.length; }).forEach(function (id) {
+      raw = raw.split('id="'+id+'"').join('id="'+id+suffix+'"').split('#'+id+'"').join('#'+id+suffix+'"').split('#'+id+')').join('#'+id+suffix+')');
+    });
+    return '<span class="lui-et-icon" aria-hidden="true">'+raw+'</span>';
+  }
+  function chipsForContext(ctx) {
+    var base = baseChipsForContext(ctx);
+    if (!base || !cur || cur.tab.type !== 'et') return base;
+    return base.map(function (item, index) {
+      var chip = Object.assign({}, item), prefix = chip.prompt || chip.label, subs;
+      if (/清洗/.test(chip.label)) subs = [
+        ['处理重复数据','标记重复记录'], ['处理空白数据','检查空值并列出缺失信息'],
+        ['统一日期格式','将日期统一为年-月-日格式'], ['清理多余空格','清理文本中的多余空格和换行']
+      ];
+      else if (/标色|标注颜色/.test(chip.label)) subs = [
+        ['标记重复值','将重复值标记为红色'], ['标记空值','将空白单元格标记为黄色'],
+        ['标记异常数值','标记明显偏高或偏低的数值'], ['按条件标记','按我指定的条件标记单元格']
+      ];
+      else if (/美化图表/.test(chip.label)) subs = [
+        ['统一配色','统一图表配色，突出重点系列'], ['调整标题','设置简洁清晰的图表标题'],
+        ['优化标签','优化数据标签，避免重叠'], ['简化样式','简化网格线和图例，让图表更清晰']
+      ];
+      else if (/调整图表/.test(chip.label)) subs = [
+        ['修改图表类型','调整为更适合当前数据的图表类型'], ['修改标题','修改图表标题'],
+        ['调整图例','调整图例位置和系列名称'], ['解读数据趋势','分析图表中的趋势与异常']
+      ];
+      else if (/分析/.test(chip.label)) subs = [
+        ['汇总关键指标','汇总关键指标并概括整体表现'], ['分析变化趋势','分析随时间变化的趋势'],
+        ['比较维度差异','比较不同维度的数据表现'], ['检查异常数据','列出值得关注的异常数据']
+      ];
+      if (subs) chip.subs = subs.map(function (row) { return { label: row[0], prompt: prefix+'，'+row[1] }; });
+      chip.showArrow = !!chip.subs && index === base.length-1;
+      return chip;
+    });
   }
 
   function placeholderFor(ctx) {
@@ -660,16 +701,19 @@
     }
     var chips = opts.bare ? null : chipsForContext(ctx);
     if (chips && !chips.length) chips = null; // 该场景无推荐 → chips 区整体不渲染
+    var etComposer = cur.tab.type === 'et';
     barEl = el(
-      '<div class="lui-bar">' +
+      '<div class="lui-bar' + (etComposer ? ' lui-et-composer' : '') + '">' +
         '<div class="lui-bar-card">' +
           (opts.onBack
             ? '<button type="button" class="lui-bar-back" title="返回">' + icon('arrow_left_s', 16) + '</button>'
-            : '') +
+            : etComposer ? '<button type="button" class="lui-et-add" aria-label="添加附件" title="添加附件">'+etCanvasIcon('symbol_cross')+'</button>' : '') +
           '<textarea class="lui-bar-input" rows="1" placeholder="' + esc(placeholderFor(ctx)) + '" spellcheck="false"></textarea>' +
-          '<button type="button" class="lui-bar-send" title="发送" aria-label="发送" disabled>' + icon('paper_plane', 16) + '</button>' +
+          (etComposer && chips ? '<div class="lui-chips lui-et-inline-chips" aria-label="推荐指令"></div>' : '') +
+          '<button type="button" class="lui-bar-send" title="发送" aria-label="发送" disabled>' + (etComposer ? etCanvasIcon('arrow_up_tail_l') : icon('paper_plane', 16)) + '</button>' +
         '</div>' +
-        (chips ? '<div class="lui-chips-row"><div class="lui-chips"></div></div>' : '') +
+        (!etComposer && chips ? '<div class="lui-chips-row"><div class="lui-chips"></div></div>' : '') +
+        (etComposer ? '<input type="file" class="lui-et-file-input" multiple hidden><div class="lui-et-file-note" role="status" hidden></div>' : '') +
       '</div>');
     document.body.appendChild(barEl);
     if (opts.cover) placeCover(barEl, opts.cover); // 覆盖在锚元素位置（补充要求覆盖决策条）
@@ -704,6 +748,7 @@
       if (cur.tab.type === 'et' && window.Agent) Agent.updateCanvasDraft(cur.tab.id, ctx, input.value);
     });
     input.addEventListener('keydown', function (e) {
+      if (etComposer && e.key === 'Tab' && input.value.trim()) return;
       if (e.key === 'Enter' && !e.shiftKey && !e.isComposing && input.value.trim()) { // Shift+Enter 换行；isComposing 防中文输入法误发
         e.preventDefault();
         submit(ctx, input.value.trim());
@@ -715,6 +760,17 @@
     sendBtn.addEventListener('click', function () { if (input.value.trim()) submit(ctx, input.value.trim()); });
 
     if (chips) paintChips(barEl.querySelector('.lui-chips'), chips, ctx, input, sendBtn);
+    if (etComposer) {
+      var panel = barEl, add = panel.querySelector('.lui-et-add'), fileInput = panel.querySelector('.lui-et-file-input');
+      if (!chips) panel.classList.toggle('is-empty', !input.value.trim());
+      input.addEventListener('input', function () { if (!chips) panel.classList.toggle('is-empty', !input.value.trim()); });
+      if (add) add.addEventListener('click', function () { fileInput.click(); });
+      fileInput.addEventListener('change', function () {
+        var note = panel.querySelector('.lui-et-file-note');
+        note.textContent = fileInput.files.length ? '已选择：'+Array.from(fileInput.files).map(function (file) { return file.name; }).join('、')+'（演示附件）' : '';
+        note.hidden = !fileInput.files.length;
+      });
+    }
   }
 
   function autoGrowInput(input) {
@@ -723,11 +779,59 @@
     input.style.overflowY = input.scrollHeight > 88 ? 'auto' : 'hidden';
   }
 
-  /* 推荐 chips 全程保留：点击只把提示词带入输入框并标记当前项，不直接发送。
-     有子项时在一级 chips 下方展开；点击二级后一级与二级推荐都继续保留，方便反复切换。
-     例外：表格（et）的 chips 都没有二级推荐，这里不留选中态——点击只把提示词回填输入框。
-     理由：真正生效的是输入框里那段可编辑文本，chip 常驻高亮会让人误以为「当前挂在这个推荐上」。 */
+  /* ET 推荐由真实输入驱动：空态一级内嵌，精确回到一级文案时显示二级菜单。 */
+  function paintEtChips(box, chips, ctx, input, sendBtn) {
+    var panel = box.closest('.lui-bar'), selected = -1;
+    panel.classList.add('has-recommendations');
+    box.innerHTML = '<div class="lui-chip-list">'+chips.map(function (chip,i) {
+      return '<button type="button" class="lui-chip" data-i="'+i+'"'+(chip.subs?' aria-haspopup="menu" aria-expanded="false"':'')+'>'+esc(chip.label)+(chip.showArrow?etCanvasIcon('arrow_down_s'):'')+'</button>';
+    }).join('')+'</div>';
+    var subs = document.createElement('div'); subs.className = 'kd-menu lui-et-submenu'; subs.setAttribute('role','menu'); subs.setAttribute('aria-label','二级推荐指令'); subs.hidden = true; panel.appendChild(subs);
+    subs.id = 'lui-et-suggestions-' + (++etCanvasIconSequence);
+    box.querySelectorAll('[aria-haspopup]').forEach(function (button) { button.setAttribute('aria-controls', subs.id); });
+    function sync() {
+      var text = input.value.trim(), normalized = text.replace(/[，,：:\s]+$/,'');
+      panel.classList.toggle('is-empty', !text); sendBtn.disabled = !text;
+      var index = text ? chips.findIndex(function (chip) { return !!chip.subs && normalized === (chip.prompt || chip.label); }) : -1;
+      box.querySelectorAll('[aria-haspopup]').forEach(function (button) { button.setAttribute('aria-expanded', String(+button.getAttribute('data-i') === index)); });
+      if (index < 0) { subs.hidden = true; selected = -1; return; }
+      if (index !== selected || subs.hidden) {
+        selected = index;
+        subs.innerHTML = chips[index].subs.map(function (sub,i) { var item = typeof sub === 'string' ? {label:sub} : sub;
+          return '<button type="button" class="kd-menu-item lui-et-sub-item" role="menuitem" data-sub="'+i+'">'+etCanvasIcon('ai_edit')+'<span>'+esc(item.label)+'</span></button>';
+        }).join('');
+        subs.hidden = false;
+      }
+      subs.classList.remove('is-above');
+      if (panel.getBoundingClientRect().bottom + subs.offsetHeight + 4 > innerHeight - 8) subs.classList.add('is-above');
+    }
+    box.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    box.addEventListener('click', function (e) {
+      var button = e.target.closest('[data-i]'); if (!button) return;
+      input.value = chips[+button.getAttribute('data-i')].prompt || chips[+button.getAttribute('data-i')].label;
+      input.dispatchEvent(new Event('input')); input.focus(); input.setSelectionRange(input.value.length,input.value.length);
+    });
+    subs.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    subs.addEventListener('click', function (e) {
+      var button=e.target.closest('[data-sub]'); if(!button || selected<0)return;
+      var chip=chips[selected],sub=chip.subs[+button.getAttribute('data-sub')];
+      input.value=typeof sub==='string'?(chip.prompt||chip.label)+'，'+sub:sub.prompt;
+      input.dispatchEvent(new Event('input'));input.focus();input.setSelectionRange(input.value.length,input.value.length);
+    });
+    input.addEventListener('input',sync);
+    input.addEventListener('keydown',function(e){
+      if(e.key==='ArrowDown'&&!subs.hidden){var first=subs.querySelector('[role="menuitem"]');if(first){e.preventDefault();first.focus();}}
+    });
+    subs.addEventListener('keydown',function(e){
+      if(['ArrowDown','ArrowUp','Home','End'].indexOf(e.key)<0)return;
+      e.preventDefault();var items=Array.from(subs.querySelectorAll('[role="menuitem"]')),i=items.indexOf(document.activeElement);
+      if(e.key==='Home')i=0;else if(e.key==='End')i=items.length-1;else i=(i+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;items[i].focus();
+    });
+    sync();
+  }
+
   function paintChips(box, chips, ctx, input, sendBtn) {
+    if (cur.tab.type === 'et') { paintEtChips(box, chips, ctx, input, sendBtn); return; }
     var keepSelState = cur.tab.type !== 'et'; // 表格：无选中态，只回填
     box.innerHTML = '<div class="lui-chip-list">' + chips.map(function (c, i) {
       return '<button type="button" class="lui-chip" data-i="' + i + '">' + esc(c.label) + '</button>';
