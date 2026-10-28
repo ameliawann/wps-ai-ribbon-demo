@@ -12,7 +12,7 @@
     { name: '可视化图表生成', icon: 'chart_column' },
     { name: '财务报表账龄分析', icon: 'doc' }
   ];
-  var menu = null, anchor = null, activeAside = null, observer = null;
+  var menu = null, anchor = null, sidebarAnchor = null, activeAside = null, observer = null;
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function icon(name, large) {
     var raw = assets[name] || '';
@@ -31,12 +31,12 @@
   function position() {
     if (!menu || !menu.isConnected || menu.hidden || !anchor || !anchor.isConnected) return;
     var rect = anchor.getBoundingClientRect();
-    var inner = activeAside.querySelector('.ag-inner').getBoundingClientRect();
     var width = Math.min(228, window.innerWidth - 16);
     menu.style.width = width + 'px';
-    menu.style.maxHeight = Math.max(120, rect.top - 24) + 'px';
+    var fromRibbon = anchor.getAttribute('data-et-skill-entry') === 'mine';
+    menu.style.maxHeight = Math.max(120, fromRibbon ? window.innerHeight - rect.bottom - 16 : rect.top - 24) + 'px';
     menu.style.left = Math.max(8, Math.min(rect.left, window.innerWidth - width - 8)) + 'px';
-    menu.style.top = Math.max(8, rect.top - 8 - menu.getBoundingClientRect().height) + 'px';
+    menu.style.top = (fromRibbon ? rect.bottom + 4 : Math.max(8, rect.top - 8 - menu.getBoundingClientRect().height)) + 'px';
   }
   function row(name, glyph, record) {
     return '<div class="et-skills-row' + (record ? ' et-skills-record' : '') + '" role="none"><button type="button" class="et-skills-item" role="menuitem" data-skill-name="' + esc(name) + '" title="' + esc(name) + '"' + (record ? ' data-skill-record' : '') + '>' + icon(glyph) + '<span>' + esc(name) + '</span></button></div>';
@@ -53,6 +53,7 @@
     position();
   }
   function putInDraft(text) {
+    if (!Agent.isOpen()) Agent.toggle();
     var input = activeAside && activeAside.querySelector('.ag-input');
     if (!input || input.getAttribute('contenteditable') === 'false') return;
     close(false);
@@ -69,14 +70,16 @@
     if (!Agent.isOpen()) Agent.toggle();
     Agent.prepareRecordSkill(tab.id, icon('record_macro'));
   }
-  function open(focusMine) {
+  function open(focusMine, trigger) {
+    close(false);
+    anchor = trigger || sidebarAnchor;
     if (!anchor || !anchor.isConnected || !current()) return;
-    if (!Agent.isOpen()) Agent.toggle();
+    if (anchor === sidebarAnchor && !Agent.isOpen()) Agent.toggle();
     if (!menu || !menu.isConnected) {
       menu = document.createElement('section');
       menu.className = 'et-skills-menu'; menu.id = 'et-skills-menu'; menu.setAttribute('role', 'region'); menu.setAttribute('aria-label', '技能菜单');
       menu.innerHTML = '<div class="kd-input kd-input-lg et-skills-search"><div class="kd-input-wrap"><span class="kd-input-prefix">' + icon('magnifier') + '</span><input type="search" class="kd-input-inner" placeholder="搜索技能" aria-label="搜索技能"></div></div><div class="et-skills-body"></div><footer class="et-skills-footer"><button type="button" class="et-skills-item" data-skill-create>' + icon('symbol_cross') + '<span>从对话中创建技能</span></button></footer>';
-      activeAside.appendChild(menu);
+      document.body.appendChild(menu);
       menu.querySelector('input').addEventListener('input', renderLists);
       menu.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -109,12 +112,13 @@
   window.EtSkills = {
     mount: function (aside) {
       if (observer) observer.disconnect();
-      close(false); menu = null; activeAside = aside;
+      close(false); if (menu) menu.remove(); menu = null; activeAside = aside;
       var upload = aside.querySelector('[aria-label="添加附件"]');
       if (!upload) return;
       anchor = document.createElement('button'); anchor.type = 'button'; anchor.className = 'ag-icon-btn et-skills-trigger'; anchor.title = '技能'; anchor.setAttribute('aria-label', '技能'); anchor.setAttribute('aria-haspopup', 'menu'); anchor.setAttribute('aria-expanded', 'false'); anchor.setAttribute('aria-controls', 'et-skills-menu'); anchor.innerHTML = icon('lightning');
-      upload.after(anchor);
-      anchor.addEventListener('click', function (e) { e.stopPropagation(); if (menu && menu.isConnected && !menu.hidden) close(false); else open(); });
+      sidebarAnchor = anchor;
+      upload.after(sidebarAnchor);
+      anchor.addEventListener('click', function (e) { e.stopPropagation(); if (menu && menu.isConnected && !menu.hidden && anchor === sidebarAnchor) close(false); else open(false, sidebarAnchor); });
       if (window.ResizeObserver) { observer = new ResizeObserver(position); observer.observe(aside); }
     },
     initDemo: function (root) { syncDemo(root); root.querySelectorAll('[data-skills-demo]').forEach(function (btn) { btn.addEventListener('click', function () { demoState = btn.getAttribute('data-skills-demo'); try { localStorage.setItem(storageKey, demoState); } catch (e) {} syncDemo(root); if (menu && menu.isConnected && !menu.hidden) renderLists(); }); }); }
@@ -122,13 +126,20 @@
   document.addEventListener('click', function (e) {
     var entry = e.target.closest('[data-et-skill-entry]');
     if (entry && current()) {
-      if (!Agent.isOpen()) Agent.toggle();
-      if (entry.getAttribute('data-et-skill-entry') === 'mine') open(true);
+      if (entry.getAttribute('data-et-skill-entry') === 'mine') {
+        if (menu && !menu.hidden && anchor === entry) close(false); else open(true, entry);
+      }
       else prepareRecord();
       return;
     }
     if (e.target.closest('[data-skills-demo]')) return;
     if (menu && !menu.contains(e.target) && e.target !== anchor) close(false);
   });
+  document.addEventListener('keydown', function (e) {
+    var entry=e.target.closest('[data-et-skill-entry="mine"]');
+    if(entry && e.key==='ArrowDown'){e.preventDefault();open(true,entry);}
+    if(e.key==='Escape' && menu && !menu.hidden){e.preventDefault();close(true);}
+  });
   window.addEventListener('resize', function () { position(); });
+  document.addEventListener('scroll', function () { position(); }, true);
 })();
