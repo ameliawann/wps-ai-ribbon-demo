@@ -2751,7 +2751,37 @@ AndPrintQat</desc><style>
        km_darkmode_fill: #C7C7C7;
        km_darkmode_stroke: #C7C7C7; 
     }</style><g id="etai-7-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etai-7-è·¯å¾" fill-rule="evenodd" clip-rule="evenodd" d="M8.58133 5C8.91542 5 9.08273 5.40393 8.84649 5.64017L6.26546 8.22114C6.11902 8.36757 5.8816 8.36758 5.73515 8.22115L3.15392 5.64018C2.91766 5.40395 3.08497 5 3.41907 5H4.35744C4.45684 5 4.55217 5.03946 4.62249 5.10971L5.73507 6.22128C5.88156 6.36764 6.11897 6.36755 6.26536 6.22107L7.37582 5.10992C7.44616 5.03954 7.54157 5 7.64107 5H8.58133Z" stroke="none"/></g></svg></span></span></button>
-</div></div><div class="rb-group-label">清洗加工</div></section>
+</div><div class="rb-stack"><button type="button" class="rb-tool rb-menu has-label" title="AI 数据校对" aria-label="AI 数据校对" data-et-ai-capability="proofread"><span class="rb-icon rb-icon-16" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>数据校对16_AiSmartProofing</desc><style>
+    .kd-stroke-width-icon-regular { 
+       stroke-width: var(--kd-stroke-width-icon-regular, 1px)
+    }
+    .kd-color-icon-primary {
+       fill: var(--kd-color-icon-primary, #333333);
+       stroke: var(--kd-color-icon-primary, #333333);
+       km_fill: #333333;
+       km_stroke: #333333;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }
+    .kd-color-icon-green-primary {
+       fill: var(--kd-color-icon-green-primary, #20804E);
+       stroke: var(--kd-color-icon-green-primary, #20804E);
+       km_fill: #20804E;
+       km_stroke: #20804E;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }</style><g id="data-tools-proofread-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="data-tools-proofread-line" d="M13.5 8V2C13.5 1.72386 13.2761 1.5 13 1.5H2C1.72386 1.5 1.5 1.72386 1.5 2V13C1.5 13.2761 1.72386 13.5 2 13.5H6" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="data-tools-proofread-line_2" d="M1.5 7.5H13.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="data-tools-proofread-line_3" d="M7.5 1.5V10" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="data-tools-proofread-group-1" class="kd-color-icon-green-primary kd-stroke-width-icon-regular"><path id="data-tools-proofread-Vector 1514" d="M7 11.5L9.28787 13.7878C9.40503 13.905 9.59497 13.905 9.71213 13.7878L14.5 9" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span><span class="rb-label">AI 数据校对</span></button><button type="button" class="rb-tool rb-menu has-label" title="AI 跨表匹配" aria-label="AI 跨表匹配" data-et-ai-capability="match"><span class="rb-icon rb-icon-16" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>关联_连接</desc><style>
+    .kd-stroke-width-icon-regular { 
+       stroke-width: var(--kd-stroke-width-icon-regular, 1px)
+    }
+    .kd-color-icon-primary {
+       fill: var(--kd-color-icon-primary, #333333);
+       stroke: var(--kd-color-icon-primary, #333333);
+       km_fill: #333333;
+       km_stroke: #333333;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }</style><g id="data-tools-match-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="data-tools-match-line" d="M5.5 4V2C5.5 1.72386 5.72386 1.5 6 1.5H14C14.2761 1.5 14.5 1.72386 14.5 2V10C14.5 10.2761 14.2761 10.5 14 10.5H6C5.72386 10.5 5.5 10.2761 5.5 10V7" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="data-tools-match-line_2" d="M10.5 12V14C10.5 14.2761 10.2761 14.5 10 14.5H2C1.72386 14.5 1.5 14.2761 1.5 14V6C1.5 5.72386 1.72386 5.5 2 5.5H10C10.2761 5.5 10.5 5.72386 10.5 6V9" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span><span class="rb-label">AI 跨表匹配</span></button></div></div><div class="rb-group-label">清洗加工</div></section>
 <div class="rb-divider-v" aria-hidden="true"></div>
 <section class="rb-group" aria-label="分析计算"><div class="rb-group-content"><button type="button" class="rb-large" title="AI 数据分析" aria-label="AI 数据分析" data-et-ai-capability="analysis"><span class="rb-large-icon"><span class="rb-icon rb-icon-24" aria-hidden="true" data-icon="ai_smart_analysis_24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>智能分析24_AiSmartAnalysis</desc><style>
     .kd-stroke-width-icon-regular { 
