@@ -70,7 +70,7 @@
     if (!Agent.isOpen()) Agent.toggle();
     Agent.prepareRecordSkill(tab.id, icon('record_macro'));
   }
-  function open(focusMine, trigger) {
+  function open(trigger) {
     close(false);
     anchor = trigger || sidebarAnchor;
     if (!anchor || !anchor.isConnected || !current()) return;
@@ -103,8 +103,7 @@
     }
     menu.hidden = false; anchor.setAttribute('aria-expanded', 'true');
     menu.querySelector('input').value = ''; renderLists(); position();
-    var firstMine = focusMine && demoState === 'filled' && menu.querySelector('[aria-label="我的技能列表"] [role="menuitem"]');
-    if (firstMine) firstMine.focus(); else menu.querySelector('input').focus();
+    menu.querySelector('input').focus();
   }
   function syncDemo(root) {
     root.querySelectorAll('[data-skills-demo]').forEach(function (btn) { var on = btn.getAttribute('data-skills-demo') === demoState; btn.classList.toggle('is-active', on); btn.setAttribute('aria-pressed', String(on)); });
@@ -118,7 +117,7 @@
       anchor = document.createElement('button'); anchor.type = 'button'; anchor.className = 'ag-icon-btn et-skills-trigger'; anchor.title = '技能'; anchor.setAttribute('aria-label', '技能'); anchor.setAttribute('aria-haspopup', 'menu'); anchor.setAttribute('aria-expanded', 'false'); anchor.setAttribute('aria-controls', 'et-skills-menu'); anchor.innerHTML = icon('lightning');
       sidebarAnchor = anchor;
       upload.after(sidebarAnchor);
-      anchor.addEventListener('click', function (e) { e.stopPropagation(); if (menu && menu.isConnected && !menu.hidden && anchor === sidebarAnchor) close(false); else open(false, sidebarAnchor); });
+      anchor.addEventListener('click', function (e) { e.stopPropagation(); if (menu && menu.isConnected && !menu.hidden && anchor === sidebarAnchor) close(false); else open(sidebarAnchor); });
       if (window.ResizeObserver) { observer = new ResizeObserver(position); observer.observe(aside); }
     },
     initDemo: function (root) { syncDemo(root); root.querySelectorAll('[data-skills-demo]').forEach(function (btn) { btn.addEventListener('click', function () { demoState = btn.getAttribute('data-skills-demo'); try { localStorage.setItem(storageKey, demoState); } catch (e) {} syncDemo(root); if (menu && menu.isConnected && !menu.hidden) renderLists(); }); }); }
@@ -127,7 +126,7 @@
     var entry = e.target.closest('[data-et-skill-entry]');
     if (entry && current()) {
       if (entry.getAttribute('data-et-skill-entry') === 'mine') {
-        if (menu && !menu.hidden && anchor === entry) close(false); else open(true, entry);
+        if (menu && !menu.hidden && anchor === entry) close(false); else open(entry);
       }
       else prepareRecord();
       return;
@@ -137,7 +136,7 @@
   });
   document.addEventListener('keydown', function (e) {
     var entry=e.target.closest('[data-et-skill-entry="mine"]');
-    if(entry && e.key==='ArrowDown'){e.preventDefault();open(true,entry);}
+    if(entry && e.key==='ArrowDown'){e.preventDefault();open(entry);}
     if(e.key==='Escape' && menu && !menu.hidden){e.preventDefault();close(true);}
   });
   window.addEventListener('resize', function () { position(); });
