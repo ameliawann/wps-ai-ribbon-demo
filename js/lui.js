@@ -908,6 +908,7 @@
 
   /* 转侧边栏：展开（若折叠）+ sendText 播放（带 ctx 供 action 坐标注入） */
   function goSidebar(ctx, text) {
+    var sourceTab = cur.tab;
     if (!Agent.isOpen()) Agent.toggle();
     var contextText = '';
     if (cur.tab.type === 'et' && ctx.type === 'cells') contextText = '\n选区：Sheet1!' + ctx.a1;
@@ -915,7 +916,9 @@
     if (cur.tab.type === 'et' && ctx.type === 'cursor') contextText = '\n位置：Sheet1!' + ctx.a1Start;
     Agent.sendText(cur.tab.id, text + contextText, ctx);
     if (cur.tab.type === 'et' && ctx.type === 'chart' && storedOn(ET_ENTRY_SETTING)) {
-      setTimeout(function () { if (cur && cur.tab.type === 'et' && cur.tab.doc.chartSelected) LUI.onEtChartSel(cur.tab); }, 300);
+      setTimeout(function () {
+        if (cur && cur.tab === sourceTab && sourceTab.doc.chartSelected) LUI.onEtChartSel(sourceTab);
+      }, 300);
     }
   }
 

@@ -485,18 +485,6 @@
     sel.addRange(r);
   }
 
-  /* 追加画布的一轮输入：选区做成 chip + 指令文本接在后面 */
-  function appendCanvasTurn(s, ctx, text) {
-    var input = s.view.input;
-    if (input.textContent.length && !/\s$/.test(input.textContent)) input.appendChild(document.createTextNode(' '));
-    input.appendChild(makeChipEl(ctx));
-    input.appendChild(document.createTextNode(' ' + text));
-    s.sidebarDraft = readInputText(s);
-    s.sidebarHTML = input.innerHTML;
-    syncPlaceholder(s);
-    focusInputEnd(s);
-  }
-
   function makeChipEl(ctx) {
     var rg = ctx && ctx.range;
     var chip = document.createElement('span');
@@ -641,27 +629,13 @@
     syncInput(s);
   };
 
-  /* 画布发送前统一判定：
-     - 侧边栏「开着」且有自己的草稿 → 用户在看着那个输入框，画布内容只回填（选区 chip + 指令），
-       由他在那唯一的输入框里确认后一起发，不在这里发送；
-     - 侧边栏「收起」→ 用户看不见那句草稿，画布的内容应当照常发出（发完由 goSidebar 把侧边栏带出来），
-       草稿留在输入框里不动 —— 它跟这一轮画布指令无关，不该被清掉。 */
+  /* 画布指令直接发送；侧边栏的开合和原有草稿均不改变提交方式。 */
   Agent.resolveCanvasSubmit = function (tabId, text, ctx) {
     var tab = tabById(tabId);
     if (!tab) return { handled: false, text: text };
     var s = sessionOf(tab);
-    var sideText = (s.sidebarDraft || '').trim();
-    if (Agent.isOpen() && sideText) {
-      s.canvasDraft = null;
-      if (s.view) {
-        paintCanvasDraft(s);        // 先把引用卡退回普通卡片，输入框才可见/可编辑
-        appendCanvasTurn(s, ctx, text); // 选区 → chip，画布指令接在后面
-        syncInput(s);
-      }
-      return { handled: true, text: '' };
-    }
+    s.canvasActive = false;
     s.canvasDraft = null;
-    if (s.view && !sideText) { setInputText(s, ''); syncInput(s); } // 有草稿 → 保留，只退回引用卡
     paintCanvasDraft(s);
     syncInput(s);
     return { handled: false, text: text };
