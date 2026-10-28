@@ -40,8 +40,20 @@
   function arrow(){return window.icon('arrow_down_s',12);}
   function mainButton(e,composer){return '<button type="button" class="'+(composer?'et-expert-composer-main':'rb-large-split-main')+'" data-et-ai-capability="assistant" aria-label="打开'+e.name+'" title="打开灵犀">'+(composer?portrait(e,'is-small')+'<span>'+e.name+'</span>':'<span class="rb-large-icon">'+portrait(e)+'</span>')+'</button>';}
   function triggerButton(e,composer){return '<button type="button" class="'+(composer?'et-expert-composer-menu':'rb-large-split-menu')+'" data-et-expert-trigger="'+(composer?'composer':'ribbon')+'" aria-label="'+(composer?'输入框':'功能区')+'专家库：'+e.name+'" aria-haspopup="menu" aria-expanded="false" aria-controls="et-expert-menu">'+(composer?portrait(e,'is-small')+'<span>'+e.name+'</span>'+arrow():'<span class="rb-large-label">'+e.name+arrow()+'</span>')+'</button>';}
+  var dashboardIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>看板视图</desc><style>\n    .kd-stroke-width-icon-regular { \n       stroke-width: var(--kd-stroke-width-icon-regular, 1px)\n    }\n    .kd-color-icon-primary {\n       fill: var(--kd-color-icon-primary, #333333);\n       stroke: var(--kd-color-icon-primary, #333333);\n       km_fill: #333333;\n       km_stroke: #333333;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"et-dashboard-group-0\" class=\"kd-color-icon-primary kd-stroke-width-icon-regular\"><path id=\"et-dashboard-line\" d=\"M1.5 2C1.5 1.72386 1.72386 1.5 2 1.5H14C14.2761 1.5 14.5 1.72386 14.5 2V14C14.5 14.2761 14.2761 14.5 14 14.5H2C1.72386 14.5 1.5 14.2761 1.5 14V2Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/><path id=\"et-dashboard-line_2\" d=\"M9.5 4C9.5 3.72386 9.72386 3.5 10 3.5H12C12.2761 3.5 12.5 3.72386 12.5 4V9C12.5 9.27614 12.2761 9.5 12 9.5H10C9.72386 9.5 9.5 9.27614 9.5 9V4Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/><path id=\"et-dashboard-line_3\" d=\"M3.5 4C3.5 3.72386 3.72386 3.5 4 3.5H6C6.27614 3.5 6.5 3.72386 6.5 4V12C6.5 12.2761 6.27614 12.5 6 12.5H4C3.72386 12.5 3.5 12.2761 3.5 12V4Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/></g></svg>";
+  function renderDashboardEntry(){
+    var button=root.querySelector('[data-et-format-entry]');if(!button)return;
+    if(!button.etFormatHTML)button.etFormatHTML=button.innerHTML;
+    var finalMode=mode==='final',label=finalMode?'AI 数据看板':'AI 格式设置';
+    button.setAttribute('aria-label',label);button.setAttribute('title',label);
+    if(finalMode){
+      button.setAttribute('data-et-ai-capability','dashboard');
+      button.innerHTML='<span class="rb-icon rb-icon-16" aria-hidden="true">'+dashboardIcon+'</span><span class="rb-tool-label">'+label+'</span>';
+    }else{button.removeAttribute('data-et-ai-capability');button.innerHTML=button.etFormatHTML;}
+  }
   function renderEntry(){
     if(!root||!tab)return;
+    renderDashboardEntry();
     var group=root.querySelector('.rb-et-assistant');if(!group)return;
     var content=group.querySelector('.rb-group-content');
     if(mode==='transition'){content.innerHTML=originalContent;group.querySelector('.rb-group-label').textContent='智能助手';}
