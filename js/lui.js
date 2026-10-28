@@ -213,7 +213,7 @@
 
   function placeholderFor(ctx) {
     if (cur.tab.type !== 'et') return '描述您想做的任何更改…';
-    if (ctx.type === 'chart') return '说说你想怎么调整这个图表';
+    if (ctx.type === 'chart') return '你想对当前图表做什么？';
     if (ctx.type === 'cells') return '说说你想怎么处理这块数据';
     return '描述你想做的任何更改';
   }
@@ -408,6 +408,7 @@
   LUI.onEtChartSel = function (tab) {
     if (!cur || cur.tab !== tab || tab.type !== 'et' || playing || !storedOn(ET_ENTRY_SETTING)) return;
     closeObjMenu(); closeTblBtn();
+    if (barEl && barCtx && barCtx.type === 'chart') return;
     var ctx = Editors.getContext(tab);
     if (!ctx || ctx.type !== 'chart') return;
     objMenuEl = el('<div class="lui-obj-menu lui-et-chart-menu">' +
@@ -425,9 +426,9 @@
     document.body.appendChild(objMenuEl);
     placeFixed(objMenuEl, ctx.rect, true);
     objMenuEl.addEventListener('mousedown', function (e) { e.preventDefault(); });
-    setupEtEntryHover(objMenuEl.querySelector('.lui-et-chart-ai'));
+    setupEtEntryHover(objMenuEl.querySelector('.lui-et-chart-ai'), '告诉 AI 你的需求，帮你分析趋势、调整类型或美化当前图表。');
     objMenuEl.querySelector('.lui-ai-btn').addEventListener('click', function () {
-      openBar(ctx, '', { keepObjMenu: true });
+      openBar(ctx, '');
     });
   };
 
@@ -538,7 +539,7 @@
     if (hoverTipEl) { hoverTipEl.remove(); hoverTipEl = null; }
   }
 
-  function setupEtEntryHover(anchor) {
+  function setupEtEntryHover(anchor, description) {
     if (!anchor) return;
     var scheduleClose = function () { setTimeout(function () {
       if (hoverTipEl && !hoverTipEl.matches(':hover') && !anchor.matches(':hover')) closeHoverTip();
@@ -550,7 +551,7 @@
         if (!anchor.isConnected) return;
         hoverTipEl = el('<div class="lui-entry-tip" role="tooltip">' +
           '<div class="lui-entry-tip-title">' + 'AI 编辑' + '</div>' +
-          '<div class="lui-entry-tip-desc">' + '选中区域后，用一句话让 AI 帮你处理' + '</div>' +
+          '<div class="lui-entry-tip-desc">' + (description || '选中区域后，用一句话让 AI 帮你处理') + '</div>' +
           '<div class="lui-entry-tip-sep"></div>' +
           '<div class="lui-entry-setting">' + icon('setup', 16) + '<span>设置</span>' + icon('arrow_right_s', 12) +
             '<div class="lui-entry-submenu"><button type="button" data-close-et-entry>关闭快捷入口</button>' +
@@ -648,8 +649,7 @@
   /* opts: { bare: 不带 chips（补充要求形态）, cover: 覆盖定位锚 rect（决策条位置）, onBack: 返回按钮回调 } */
   function openBar(ctx, prefill, opts) {
     opts = opts || {};
-    if (opts.keepObjMenu) { closeMenu(); closeTblBtn(); closeBar('replace'); }
-    else closeFloats('replace');
+    closeFloats('replace');
     barCtx = ctx;
     /* 选区保持：焦点进输入框后原生选区会消失，先在文内包 .lui-keep-sel 浅底（closeBar 时还原）。
        spans 覆盖选区涉及的全部块/单元格（全选、跨段都能完整保持）。
