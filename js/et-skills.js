@@ -103,7 +103,7 @@
     }
     menu.hidden = false; anchor.setAttribute('aria-expanded', 'true');
     menu.querySelector('input').value = ''; renderLists(); position();
-    menu.querySelector('input').focus();
+    // 菜单展开不转移焦点；用户点击搜索框或按方向键后再进入菜单。
   }
   function syncDemo(root) {
     root.querySelectorAll('[data-skills-demo]').forEach(function (btn) { var on = btn.getAttribute('data-skills-demo') === demoState; btn.classList.toggle('is-active', on); btn.setAttribute('aria-pressed', String(on)); });
