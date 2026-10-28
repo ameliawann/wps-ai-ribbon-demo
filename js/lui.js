@@ -426,7 +426,7 @@
     document.body.appendChild(objMenuEl);
     placeFixed(objMenuEl, ctx.rect, true);
     objMenuEl.addEventListener('mousedown', function (e) { e.preventDefault(); });
-    setupEtEntryHover(objMenuEl.querySelector('.lui-et-chart-ai'), '帮你编辑、美化或分析当前图表');
+    setupEtEntryHover(objMenuEl.querySelector('.lui-et-chart-ai'), '告诉 AI 你的需求，帮你编辑、美化或分析当前图表。');
     objMenuEl.querySelector('.lui-ai-btn').addEventListener('click', function () {
       openBar(ctx, '');
     });
