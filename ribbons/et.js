@@ -2705,7 +2705,7 @@ AndPrintQat</desc><style>
        km_stroke: #D5F3DA;
        km_darkmode_fill: #C7C7C7;
        km_darkmode_stroke: #C7C7C7; 
-    }</style><g id="etai-3-group-2" class="kd-color-icon-green-quaternary kd-stroke-width-icon-regular"><path id="etai-3-fill" d="M20.5 8.5H14.5V20.5H20C20.2761 20.5 20.5 20.2761 20.5 20V8.5Z" stroke="none"/></g><g id="etai-3-group-1" class="kd-color-icon-green-primary kd-stroke-width-icon-regular"><path id="etai-3-line" d="M2.5 14.5H20.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-3-line_2" d="M8.5 8.5V20.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-3-line_3" d="M14.5 8.5V20.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="etai-3-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etai-3-line_4" d="M20 2.5H3C2.72386 2.5 2.5 2.72386 2.5 3V20C2.5 20.2761 2.72386 20.5 3 20.5H20C20.2761 20.5 20.5 20.2761 20.5 20V3C20.5 2.72386 20.2761 2.5 20 2.5Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-3-line_5" d="M2.5 8.5H20.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span></span><span class="rb-large-label">AI 快速建表</span></button><div class="rb-stack"><button type="button" class="rb-tool rb-menu has-label" title="转成表格" aria-label="转成表格" data-et-quick-build="convert"><span class="rb-icon rb-icon-16" aria-hidden="true" data-icon="change_text_to_et"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>文本转换成表格16_ConvertTexttoTable</desc><style>
+    }</style><g id="etai-3-group-2" class="kd-color-icon-green-quaternary kd-stroke-width-icon-regular"><path id="etai-3-fill" d="M20.5 8.5H14.5V20.5H20C20.2761 20.5 20.5 20.2761 20.5 20V8.5Z" stroke="none"/></g><g id="etai-3-group-1" class="kd-color-icon-green-primary kd-stroke-width-icon-regular"><path id="etai-3-line" d="M2.5 14.5H20.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-3-line_2" d="M8.5 8.5V20.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-3-line_3" d="M14.5 8.5V20.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="etai-3-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etai-3-line_4" d="M20 2.5H3C2.72386 2.5 2.5 2.72386 2.5 3V20C2.5 20.2761 2.72386 20.5 3 20.5H20C20.2761 20.5 20.5 20.2761 20.5 20V3C20.5 2.72386 20.2761 2.5 20 2.5Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-3-line_5" d="M2.5 8.5H20.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span></span><span class="rb-large-label">AI 快速建表</span></button><div class="rb-stack"><button type="button" class="rb-tool rb-menu has-label" title="粘贴转表" aria-label="粘贴转表" data-et-quick-build="paste"><span class="rb-icon rb-icon-16" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>粘贴16_Paste</desc><style>
     .kd-stroke-width-icon-regular { 
        stroke-width: var(--kd-stroke-width-icon-regular, 1px)
     }
@@ -2716,7 +2716,53 @@ AndPrintQat</desc><style>
        km_stroke: #333333;
        km_darkmode_fill: #C7C7C7;
        km_darkmode_stroke: #C7C7C7; 
-    }</style><g id="etai-4-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etai-4-line" d="M10.5 5.5V1.99976C10.5 1.72361 10.2761 1.49976 10 1.49976H2C1.72386 1.49976 1.5 1.72361 1.5 1.99976V9.99976C1.5 10.2759 1.72386 10.4998 2 10.4998H5.47586C5.48476 10.4998 5.48923 10.489 5.48293 10.4827L4 9" stroke-linecap="round" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="etai-4-Vector 2021" d="M4 3.49976H8" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-4-line_2" d="M5.5 8V5.99976C5.5 5.72361 5.72386 5.49976 6 5.49976H14C14.2761 5.49976 14.5 5.72361 14.5 5.99976V13.9998C14.5 14.2759 14.2761 14.4998 14 14.4998H6C5.72386 14.4998 5.5 14.2759 5.5 13.9998V12" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="etai-4-Vector 2019" d="M7 9.49976H14" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-4-Vector 2020" d="M9.5 5.49976V14.4998" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span><span class="rb-tool-label">转成表格</span></button><button type="button" class="rb-tool rb-menu has-label" title="做同款" aria-label="做同款" data-et-quick-build="same"><span class="rb-icon rb-icon-16" aria-hidden="true" data-icon="copy"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>复制16_副本_Copy_CopyQat</desc><style>
+    }
+    .kd-color-icon-blue-primary {
+       fill: var(--kd-color-icon-blue-primary, #2661BF);
+       stroke: var(--kd-color-icon-blue-primary, #2661BF);
+       km_fill: #2661BF;
+       km_stroke: #2661BF;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }</style><g id="oct29-paste-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="oct29-paste-line" d="M7.5 13.5H2C1.72386 13.5 1.5 13.2761 1.5 13V3C1.5 2.72386 1.72386 2.5 2 2.5H4.5V2C4.5 1.72386 4.72386 1.5 5 1.5H8C8.27614 1.5 8.5 1.72386 8.5 2V2.5H11C11.2761 2.5 11.5 2.72386 11.5 3V6.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="oct29-paste-line_2" d="M3.5 2.5V4C3.5 4.27614 3.72386 4.5 4 4.5H9C9.27614 4.5 9.5 4.27614 9.5 4V2.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="oct29-paste-group-1" class="kd-color-icon-blue-primary kd-stroke-width-icon-regular"><path id="oct29-paste-line_3" d="M14 6.5H8C7.72386 6.5 7.5 6.72386 7.5 7V14C7.5 14.2761 7.72386 14.5 8 14.5H14C14.2761 14.5 14.5 14.2761 14.5 14V7C14.5 6.72386 14.2761 6.5 14 6.5Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span><span class="rb-tool-label">粘贴转表</span></button><button type="button" class="rb-tool rb-menu has-label" title="图片转表" aria-label="图片转表" data-et-quick-build="image"><span class="rb-icon rb-icon-16" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>图片转表格16_从图片转表格新建16_create_from_pic_table</desc><style>
+    .kd-stroke-width-icon-regular { 
+       stroke-width: var(--kd-stroke-width-icon-regular, 1px)
+    }
+    .kd-color-icon-primary {
+       fill: var(--kd-color-icon-primary, #333333);
+       stroke: var(--kd-color-icon-primary, #333333);
+       km_fill: #333333;
+       km_stroke: #333333;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }
+    .kd-color-icon-green-primary {
+       fill: var(--kd-color-icon-green-primary, #20804E);
+       stroke: var(--kd-color-icon-green-primary, #20804E);
+       km_fill: #20804E;
+       km_stroke: #20804E;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }</style><g id="oct29-image-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="oct29-image-line" d="M10.5 5.5V1.83333C10.5 1.64924 10.3508 1.5 10.1667 1.5H1.83333C1.64924 1.5 1.5 1.64924 1.5 1.83333V10.1667C1.5 10.3508 1.64924 10.5 1.83333 10.5H5.48637C5.49192 10.5 5.49504 10.4936 5.49163 10.4892L4.33335 8.99993" stroke-linecap="round" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="oct29-image-line_2" d="M1.66602 7.66668L3.68042 5.12793L5.27197 6.45422" stroke-linecap="round" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/></g><g id="oct29-image-group-1" class="kd-color-icon-green-primary kd-stroke-width-icon-regular"><path id="oct29-image-line_3" d="M5.5 8.00008V6C5.5 5.72386 5.72386 5.5 6 5.5H14C14.2761 5.5 14.5 5.72386 14.5 6V14C14.5 14.2761 14.2761 14.5 14 14.5H6C5.72386 14.5 5.5 14.2761 5.5 14V12.0001" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/></g><g id="oct29-image-group-2" class="kd-color-icon-green-primary kd-stroke-width-icon-regular"><path id="oct29-image-line_4" d="M8.36719 11.0002C8.36719 11.8287 8.99648 12.4998 10.0151 12.4998C10.8801 12.4998 11.6914 11.9472 11.6914 11.1838C11.6914 9.44914 8.50004 10.425 8.50004 8.76441C8.50004 8.17008 9.00004 7.49976 9.98497 7.49976C11 7.49976 11.5 8.23766 11.5 8.91623" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span><span class="rb-tool-label">图片转表</span></button></div><div class="rb-stack"><button type="button" class="rb-tool rb-menu has-label" title="多表合并" aria-label="多表合并" data-et-quick-build="merge"><span class="rb-icon rb-icon-16" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>合并表格16_MergeSheet</desc><style>
+    .kd-stroke-width-icon-regular { 
+       stroke-width: var(--kd-stroke-width-icon-regular, 1px)
+    }
+    .kd-color-icon-primary {
+       fill: var(--kd-color-icon-primary, #333333);
+       stroke: var(--kd-color-icon-primary, #333333);
+       km_fill: #333333;
+       km_stroke: #333333;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }
+    .kd-color-icon-green-primary {
+       fill: var(--kd-color-icon-green-primary, #20804E);
+       stroke: var(--kd-color-icon-green-primary, #20804E);
+       km_fill: #20804E;
+       km_stroke: #20804E;
+       km_darkmode_fill: #C7C7C7;
+       km_darkmode_stroke: #C7C7C7; 
+    }</style><g id="oct29-merge-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="oct29-merge-line" d="M13 1.5H2C1.72386 1.5 1.5 1.72386 1.5 2V10C1.5 10.2761 1.72386 10.5 2 10.5H13C13.2761 10.5 13.5 10.2761 13.5 10V2C13.5 1.72386 13.2761 1.5 13 1.5Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="oct29-merge-line_2" d="M1.5 5.5H13.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="oct29-merge-group-1" class="kd-color-icon-green-primary kd-stroke-width-icon-regular"><path id="oct29-merge-line_3" d="M5 13.4999L1.5 13.5M4.5 12.5L5.49293 13.4928C5.49683 13.4967 5.49683 13.503 5.49293 13.5069L4.5 14.5" stroke-linecap="round" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="oct29-merge-line_4" d="M10 13.4999L13.5 13.5M10.5 12.5L9.50707 13.4928C9.50317 13.4967 9.50317 13.503 9.50707 13.5069L10.5 14.5" stroke-linecap="round" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="oct29-merge-line_5" d="M7.5 1V11" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span><span class="rb-tool-label">多表合并</span></button><button type="button" class="rb-tool rb-menu has-label" title="做同款" aria-label="做同款" data-et-quick-build="same"><span class="rb-icon rb-icon-16" aria-hidden="true" data-icon="copy"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>复制16_副本_Copy_CopyQat</desc><style>
     .kd-stroke-width-icon-regular { 
        stroke-width: var(--kd-stroke-width-icon-regular, 1px)
     }
@@ -2864,7 +2910,7 @@ AndPrintQat</desc><style>
        km_stroke: #333333;
        km_darkmode_fill: #C7C7C7;
        km_darkmode_stroke: #C7C7C7; 
-    }</style><g id="etai-12-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etai-12-line" d="M8.5 13C8.77614 13 9 12.7761 9 12.5C9 12.2239 8.77614 12 8.5 12V13ZM14.5 7C14.2239 7 14 7.22386 14 7.5C14 7.77614 14.2239 8 14.5 8V7ZM3 20V13H2V20H3ZM3 13H8.5V12H3V13ZM9 20.5V4H8V20.5H9ZM9 4H14V3H9V4ZM14 4V20.5H15V4H14ZM21 20V8H20V20H21ZM20 7H14.5V8H20V7ZM3 21H20V20H3V21ZM21 8C21 7.44772 20.5523 7 20 7V8V8H21ZM20 20V21C20.5523 21 21 20.5523 21 20H20ZM9 4V4V3C8.44771 3 8 3.44772 8 4H9ZM3 13V12C2.44772 12 2 12.4477 2 13H3ZM14 4H15C15 3.44772 14.5523 3 14 3V4ZM2 20C2 20.5523 2.44772 21 3 21V20H2Z" stroke="none"/></g></svg></span></span><span class="rb-large-label">AI 做图表</span></button><div class="rb-stack"><button type="button" class="rb-tool rb-menu has-label" title="AI 表格美化" aria-label="AI 表格美化" data-et-ai-capability="beautify"><span class="rb-icon rb-icon-16" aria-hidden="true" data-icon="sheet_tidy"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>表格美化16_AiSmartOrganize_sheet_tidy</desc><style>
+    }</style><g id="etai-12-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etai-12-line" d="M8.5 13C8.77614 13 9 12.7761 9 12.5C9 12.2239 8.77614 12 8.5 12V13ZM14.5 7C14.2239 7 14 7.22386 14 7.5C14 7.77614 14.2239 8 14.5 8V7ZM3 20V13H2V20H3ZM3 13H8.5V12H3V13ZM9 20.5V4H8V20.5H9ZM9 4H14V3H9V4ZM14 4V20.5H15V4H14ZM21 20V8H20V20H21ZM20 7H14.5V8H20V7ZM3 21H20V20H3V21ZM21 8C21 7.44772 20.5523 7 20 7V8V8H21ZM20 20V21C20.5523 21 21 20.5523 21 20H20ZM9 4V4V3C8.44771 3 8 3.44772 8 4H9ZM3 13V12C2.44772 12 2 12.4477 2 13H3ZM14 4H15C15 3.44772 14.5523 3 14 3V4ZM2 20C2 20.5523 2.44772 21 3 21V20H2Z" stroke="none"/></g></svg></span></span><span class="rb-large-label">AI 做图表</span></button><button type="button" class="rb-large" title="AI 表格美化" aria-label="AI 表格美化" data-et-ai-capability="beautify"><span class="rb-large-icon"><span class="rb-icon rb-icon-24" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>表格美化24_AiSmartOrganize_sheet_tidy</desc><style>
     .kd-stroke-width-icon-regular { 
        stroke-width: var(--kd-stroke-width-icon-regular, 1px)
     }
@@ -2883,7 +2929,7 @@ AndPrintQat</desc><style>
        km_stroke: #BF5513;
        km_darkmode_fill: #C7C7C7;
        km_darkmode_stroke: #C7C7C7; 
-    }</style><g id="etai-14-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etai-14-line" d="M1.5 14V2C1.5 1.72386 1.72386 1.5 2 1.5H14C14.2761 1.5 14.5 1.72386 14.5 2V5C14.5 5.27614 14.2761 5.5 14 5.5H6.00199C5.72585 5.5 5.50199 5.72386 5.50199 6V14C5.50199 14.2761 5.27813 14.5 5.00199 14.5H2C1.72386 14.5 1.5 14.2761 1.5 14Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-14-line_2" d="M5.5 1.5V5.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-14-line_3" d="M6.5 5.5L1.5 5.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-14-line_4" d="M5.5 9.5L1.5 9.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="etai-14-group-1" class="kd-color-icon-orange-primary kd-stroke-width-icon-regular"><path id="etai-14-line_5" d="M8.24539 8.12557C8.16615 8.09758 8.08982 8.17391 8.1178 8.25316L8.91253 10.5038L7.60928 12.3164C7.56261 12.3813 7.60719 12.472 7.68708 12.4747L9.90281 12.5497L11.316 14.4504C11.3647 14.5159 11.4672 14.4985 11.4917 14.4206L12.1884 12.1962L14.4128 11.4994C14.4908 11.475 14.5081 11.3725 14.4426 11.3237L12.542 9.91057L12.4741 7.68802C12.4716 7.60794 12.3807 7.5631 12.3157 7.60992L10.496 8.92029L8.24539 8.12557Z" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-14-line_6" d="M12.5 12.5L15 15" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span><span class="rb-tool-label">AI 表格美化</span></button><button type="button" class="rb-tool rb-menu has-label" title="AI 格式设置" aria-label="AI 格式设置" data-et-format-entry><span class="rb-icon rb-icon-16" aria-hidden="true" data-icon="cell_setup"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>单元格格式</desc><style>
+    }</style><g id="oct29-beautify-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="oct29-beautify-line" d="M2.5 20V3C2.5 2.72386 2.72386 2.5 3 2.5H21C21.2761 2.5 21.5 2.72386 21.5 3V8C21.5 8.27614 21.2761 8.5 21 8.5H9C8.72386 8.5 8.5 8.72386 8.5 9V20C8.5 20.2761 8.27614 20.5 8 20.5H3C2.72386 20.5 2.5 20.2761 2.5 20Z" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="oct29-beautify-line_2" d="M2.5 14.5H8.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="oct29-beautify-line_3" d="M2.5 8.5H8.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="oct29-beautify-line_4" d="M8.5 2.5V8.5" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="oct29-beautify-group-1" class="kd-color-icon-orange-primary kd-stroke-width-icon-regular"><path id="oct29-beautify-line_5" d="M11.989 12.267L12.9232 14.9128C12.9777 15.0671 12.9533 15.2383 12.8577 15.3712L11.3277 17.4992C11.1877 17.6939 11.3215 17.966 11.5611 17.9741L14.179 18.0628C14.331 18.0679 14.4725 18.1421 14.5633 18.2642L16.2463 20.5278C16.3925 20.7244 16.7001 20.6723 16.7733 20.4384L17.5944 17.8173C17.6434 17.661 17.7658 17.5386 17.9221 17.4897L20.5432 16.6686C20.7771 16.5953 20.8292 16.2878 20.6325 16.1416L18.3698 14.4591C18.2472 14.368 18.173 14.2258 18.1683 14.0731L18.0882 11.4481C18.0808 11.2079 17.8081 11.0734 17.613 11.2138L15.476 12.7527C15.3431 12.8484 15.1718 12.8729 15.0174 12.8184L12.3717 11.8842C12.134 11.8003 11.905 12.0292 11.989 12.267Z" stroke-linecap="round" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="oct29-beautify-line_6" d="M21.5 21.5L18.25 18.25" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g></svg></span></span><span class="rb-large-label">AI 表格美化</span></button><div class="rb-stack" data-et-dashboard-stack><button type="button" class="rb-tool rb-menu has-label" title="AI 格式设置" aria-label="AI 格式设置" data-et-format-entry><span class="rb-icon rb-icon-16" aria-hidden="true" data-icon="cell_setup"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>单元格格式</desc><style>
     .kd-stroke-width-icon-regular { 
        stroke-width: var(--kd-stroke-width-icon-regular, 1px)
     }
@@ -2904,7 +2950,7 @@ AndPrintQat</desc><style>
        km_darkmode_stroke: #C7C7C7; 
     }</style><g id="etai-15-group-0" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="etai-15-line" d="M1.5 3.5H14.5" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-15-line_2" d="M1.5 12.5H4.5" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-15-line_3" d="M3 12.5H6" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-15-line_4" d="M3.5 1.5V14.5" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-15-line_5" d="M12.5 1.5V4.5" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-15-line_6" d="M12.5 3.5V6" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-15-line_7" d="M15 6.5L11 10.5" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/><path id="etai-15-line_8" d="M15 9.5L12.5 12" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></g><g id="etai-15-group-1" class="kd-color-icon-orange-primary kd-stroke-width-icon-regular"><path id="etai-15-line_9" d="M10.5 10.5H10.419C9.35916 10.5 8.5 11.3592 8.5 12.419C8.5 12.7978 8.38786 13.1682 8.17771 13.4834L7.5 14.5H10.5C11.6046 14.5 12.5 13.6046 12.5 12.5C12.5 11.3954 11.6046 10.5 10.5 10.5Z" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/></g></svg></span><span class="rb-tool-label">AI 格式设置</span></button></div></div><div class="rb-group-label">美化输出</div></section>
 <div class="rb-divider-v" aria-hidden="true"></div>
-<section class="rb-group" aria-label="设置"><div class="rb-group-content"><button type="button" class="rb-large" title="发现更多" aria-label="发现更多"><span class="rb-large-icon"><span class="rb-icon rb-icon-24" aria-hidden="true" data-icon="compass"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>指南针_原链接_浏览器打开_跳转链接</desc><style>
+<section class="rb-group" aria-label="其他"><div class="rb-group-content"><button type="button" class="rb-large" title="发现更多" aria-label="发现更多"><span class="rb-large-icon"><span class="rb-icon rb-icon-24" aria-hidden="true" data-icon="compass"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>指南针_原链接_浏览器打开_跳转链接</desc><style>
     .kd-stroke-width-icon-regular { 
        stroke-width: var(--kd-stroke-width-icon-regular, 1px)
     }
@@ -2926,7 +2972,7 @@ AndPrintQat</desc><style>
        km_stroke: #333333;
        km_darkmode_fill: #C7C7C7;
        km_darkmode_stroke: #C7C7C7; 
-    }</style><g id="et-ai-settings-group-1" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="et-ai-settings-line" d="M10.5722 2.5H13.4315L14.6468 5.54096C15.0478 5.73235 15.4263 5.96593 15.7771 6.23622L19.074 5.76076L20.5037 8.2393L18.3267 11.0085C18.3399 11.1827 18.3467 11.3302 18.3467 11.5366C18.3467 11.7167 18.3416 11.8453 18.3314 11.9976L20.5037 14.7608L19.0741 17.2393L15.8558 16.7752C15.4729 17.08 15.0555 17.3404 14.6108 17.5491L13.4316 20.5H10.5723L9.39305 17.5492C8.94835 17.3405 8.53095 17.08 8.14795 16.7752L4.9297 17.2393L3.50005 14.7608L5.67232 11.9976C5.6622 11.8453 5.65705 11.6915 5.65705 11.5366C5.65705 11.3588 5.66381 11.1828 5.67709 11.0086L3.5 8.23931L4.92966 5.76078L8.22665 6.23624C8.5774 5.96596 8.95591 5.73239 9.35692 5.54099L10.5722 2.5Z" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="et-ai-settings-line_2" d="M14.5 11.5C14.5 12.8807 13.3807 14 12 14C10.6193 14 9.5 12.8807 9.5 11.5C9.5 10.1193 10.6193 9 12 9C13.3807 9 14.5 10.1193 14.5 11.5Z" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/></g></svg></span></span><span class="rb-large-label">设置</span></button></div><div class="rb-group-label">设置</div></section>
+    }</style><g id="et-ai-settings-group-1" class="kd-color-icon-primary kd-stroke-width-icon-regular"><path id="et-ai-settings-line" d="M10.5722 2.5H13.4315L14.6468 5.54096C15.0478 5.73235 15.4263 5.96593 15.7771 6.23622L19.074 5.76076L20.5037 8.2393L18.3267 11.0085C18.3399 11.1827 18.3467 11.3302 18.3467 11.5366C18.3467 11.7167 18.3416 11.8453 18.3314 11.9976L20.5037 14.7608L19.0741 17.2393L15.8558 16.7752C15.4729 17.08 15.0555 17.3404 14.6108 17.5491L13.4316 20.5H10.5723L9.39305 17.5492C8.94835 17.3405 8.53095 17.08 8.14795 16.7752L4.9297 17.2393L3.50005 14.7608L5.67232 11.9976C5.6622 11.8453 5.65705 11.6915 5.65705 11.5366C5.65705 11.3588 5.66381 11.1828 5.67709 11.0086L3.5 8.23931L4.92966 5.76078L8.22665 6.23624C8.5774 5.96596 8.95591 5.73239 9.35692 5.54099L10.5722 2.5Z" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/><path id="et-ai-settings-line_2" d="M14.5 11.5C14.5 12.8807 13.3807 14 12 14C10.6193 14 9.5 12.8807 9.5 11.5C9.5 10.1193 10.6193 9 12 9C13.3807 9 14.5 10.1193 14.5 11.5Z" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/></g></svg></span></span><span class="rb-large-label">设置</span></button></div><div class="rb-group-label">其他</div></section>
 
 </div>
 <ul class="kd-menu rb-et-ai-menu" id="et-ai-clean-menu" role="menu" aria-label="AI 数据清洗" hidden><li role="none"><button type="button" class="kd-menu-item" role="menuitem" tabindex="-1" data-et-ai-clean-action><span class="kd-menu-item-icon"><span class="rb-icon rb-icon-16" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" requiredCustomFeatures="data-kd-color-scheme" km_stroke-width="1" km_darkmode="true"><desc>棒_美化_魔法棒_仙女棒_美化助手16_beautification_assistant</desc><style>
@@ -3001,6 +3047,7 @@ AndPrintQat</desc><style>
     main: ['AI 数据清洗', '用自然语言描述清洗需求，AI 帮你去除重复数据、处理空值并统一数据格式。'],
     menu: ['AI 数据清洗', '选择 AI 数据清洗、AI 函数、AI 分列或 AI 填充，快速整理表格数据。']
   };
+  var featureTipCopy = {"AI 表格助手": "通过多轮对话深入分析数据，协助完成表格任务。", "录制技能": "录下重复的表格操作，保存为可再次使用的技能。", "我的技能": "查看和使用已保存的技能，也可以搜索推荐技能。", "AI 快速建表": "描述需要的表格，AI 帮你快速搭建内容和结构。", "粘贴转表": "粘贴文本、链接或杂乱数据，整理成结构清晰的表格。", "图片转表": "识别图片中的表格内容，转换为可编辑的表格。", "多表合并": "将多个表格合并整理，生成一张完整的总表。", "做同款": "上传参考模板，按模板的结构和格式生成表格。", "AI 数据校对": "核对明细、汇总值和公式结果，定位差异并修正计算错误。", "AI 跨表匹配": "根据共同字段匹配不同表格，补全信息并列出未匹配记录。", "AI 格式设置": "用自然语言统一数字、日期、对齐等单元格格式。", "AI 数据分析": "通过多轮对话分析指标、趋势与差异，发现数据中的关键信息。", "AI 写公式": "描述计算规则，AI 帮你生成并填写合适的公式。", "AI 条件格式": "描述标记条件，突出显示符合要求的数据。", "AI 做图表": "描述展示目标，AI 帮你选择并制作合适的图表。", "AI 表格美化": "统一表头、字体、配色和排版，让表格清晰易读。", "AI 数据看板": "生成可交互的数据看板，支持多维筛选和图表联动。", "AI 函数": "用自然语言描述处理规则，完成提取、分类、翻译等任务。", "AI 分列": "按分隔符或内容规则，将一列数据拆分为多列。", "AI 填充": "根据已有内容和规律，补全缺失信息或批量填写数据。", "发现更多": "探索更多表格 AI 能力和常用任务。", "设置": "管理表格 AI 功能、快捷入口及相关偏好。"};
   function hideTip() {
     clearTimeout(tipTimer);
     var tip = document.getElementById('et-ai-clean-tip');
@@ -3008,31 +3055,40 @@ AndPrintQat</desc><style>
   }
   function queueTip(target) {
     hideTip();
+    target.setAttribute('aria-describedby', 'et-ai-clean-tip');
     var menuTrigger = document.querySelector('[data-et-ai-clean-trigger]');
-    if (menuTrigger && menuTrigger.getAttribute('aria-expanded') === 'true') return;
+    if (menuTrigger && menuTrigger.getAttribute('aria-expanded') === 'true' && target.closest('.rb-et-clean-split')) return;
     tipTimer = setTimeout(function () {
       if (!target.isConnected) return;
       var tip = document.getElementById('et-ai-clean-tip');
       if (!tip) return;
+      var label = target.getAttribute('aria-label') || (target.querySelector('.kd-menu-item-content') || target).textContent.trim();
       var copy = tipCopy[target.getAttribute('data-et-ai-tip')];
+      if (!copy) {
+        var description = featureTipCopy[label];
+        if (!description && target.hasAttribute('data-et-expert-trigger')) {label='专家库';description='查看专家介绍并切换专家，获取适合当前文档的任务推荐。';}
+        if (!description && /^打开/.test(label)) {label=label.slice(2);description='打开灵犀，与当前文档专家对话，完成数据处理与分析任务。';}
+        if (!description) return;
+        copy=[label,description];
+      }
       tip.querySelector('.rb-et-clean-tip-title').textContent = copy[0];
       tip.querySelector('.rb-et-clean-tip-description').textContent = copy[1];
-      var rect = target.closest('.rb-et-clean-split').getBoundingClientRect();
+      var rect = (target.closest('.rb-et-clean-split') || target).getBoundingClientRect();
       tip.hidden = false;
       tip.style.left = Math.max(8, Math.min(rect.left, window.innerWidth - tip.offsetWidth - 8)) + 'px';
       tip.style.top = (rect.bottom + 4) + 'px';
     }, 500);
   }
   document.addEventListener('pointerover', function (e) {
-    var target = e.target.closest('[data-et-ai-tip]');
+    var target = e.target.closest('.rb-et-ai button, .rb-et-ai-menu button');
     if (target && !target.contains(e.relatedTarget)) queueTip(target);
   });
   document.addEventListener('pointerout', function (e) {
-    var target = e.target.closest('[data-et-ai-tip]');
+    var target = e.target.closest('.rb-et-ai button, .rb-et-ai-menu button');
     if (target && !target.contains(e.relatedTarget)) hideTip();
   });
   document.addEventListener('focusin', function (e) {
-    var target = e.target.closest('[data-et-ai-tip]');
+    var target = e.target.closest('.rb-et-ai button, .rb-et-ai-menu button');
     if (target) queueTip(target);
   });
   document.addEventListener('focusout', hideTip);
@@ -3099,5 +3155,7 @@ AndPrintQat</desc><style>
   window.addEventListener('resize', function () { closeMenu(false); hideTip(); });
   document.addEventListener('scroll', function (e) {
     if (!e.target.closest || !e.target.closest('.rb-et-ai-menu')) { closeMenu(false); hideTip(); }
+    var focused = document.activeElement;
+    if (focused && focused.matches('.rb-et-ai button, .rb-et-ai-menu button')) queueTip(focused);
   }, true);
 })();

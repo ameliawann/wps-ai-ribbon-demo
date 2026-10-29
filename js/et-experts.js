@@ -44,12 +44,20 @@
   function renderDashboardEntry(){
     var button=root.querySelector('[data-et-format-entry]');if(!button)return;
     if(!button.etFormatHTML)button.etFormatHTML=button.innerHTML;
-    var finalMode=mode==='final',label=finalMode?'AI 数据看板':'AI 格式设置';
-    button.setAttribute('aria-label',label);button.setAttribute('title',label);
-    if(finalMode){
-      button.setAttribute('data-et-ai-capability','dashboard');
-      button.innerHTML='<span class="rb-icon rb-icon-16" aria-hidden="true">'+dashboardIcon+'</span><span class="rb-tool-label">'+label+'</span>';
-    }else{button.removeAttribute('data-et-ai-capability');button.innerHTML=button.etFormatHTML;}
+    var proofread=root.querySelector('[data-et-proofread-entry], [data-et-ai-capability="proofread"]');
+    if(proofread){
+      proofread.setAttribute('data-et-proofread-entry','');
+      if(!proofread.etProofreadHTML)proofread.etProofreadHTML=proofread.innerHTML;
+      var proofLabel=mode==='final'?'AI 数据校对':'AI 格式设置';
+      proofread.setAttribute('aria-label',proofLabel);
+      if(mode==='final'){proofread.setAttribute('data-et-ai-capability','proofread');proofread.innerHTML=proofread.etProofreadHTML;}
+      else{proofread.removeAttribute('data-et-ai-capability');proofread.innerHTML=button.etFormatHTML;}
+    }
+    var stack=button.closest('[data-et-dashboard-stack]');if(stack)stack.hidden=mode!=='final';
+    button.hidden=mode!=='final';
+    button.setAttribute('aria-label','AI 数据看板');button.removeAttribute('title');
+    button.setAttribute('data-et-ai-capability','dashboard');
+    button.innerHTML='<span class="rb-icon rb-icon-16" aria-hidden="true">'+dashboardIcon+'</span><span class="rb-tool-label">AI 数据看板</span>';
   }
   function renderEntry(){
     if(!root||!tab)return;
@@ -58,6 +66,7 @@
     var content=group.querySelector('.rb-group-content');
     if(mode==='transition'){content.innerHTML=originalContent;group.querySelector('.rb-group-label').textContent='智能助手';}
     else{var e=active();content.innerHTML='<div class="rb-large-split rb-et-expert-split" role="group" aria-label="'+e.name+'">'+mainButton(e,false)+triggerButton(e,false)+'</div>';group.querySelector('.rb-group-label').textContent='智能助手';}
+    root.querySelectorAll('.rb-et-ai button[title], .rb-et-ai-menu button[title]').forEach(function(button){button.removeAttribute('title');});
     root.querySelectorAll('[data-expert-scheme]').forEach(function(btn){var on=btn.getAttribute('data-expert-scheme')===mode;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',String(on));});
   }
   function renderComposer(aside,doc){

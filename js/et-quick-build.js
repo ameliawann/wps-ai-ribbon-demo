@@ -11,7 +11,7 @@
     { name: '做同款表格', icon: 'create_from_default_template_et', prompt: '上传模板，自动按模板填数据', file: true },
     { name: '创建收支流水表', icon: 'sheet_condition_statistics', prompt: '帮我创建一张收支流水表，包含日期、收支类型、分类、金额和备注', file: false }
   ];
-  // 改这里：三个 Ribbon 入口各自的提示与引导。
+  // 改这里：默认轮播与四个 Ribbon 子功能的直接选中态。
   var defaultPrompts = [
     '上传图片，自动识别成表格',
     '多个表格，一键合并成总表',
@@ -23,9 +23,8 @@
     return state.preset >= 0 ? presets[state.preset].prompt : defaultPrompts[state.rotation || 0];
   }
   function stopGuidance(panel) {
-    clearInterval(panel.qbRotationTimer); clearTimeout(panel.qbPulseTimer);
-    panel.qbRotationTimer = null; panel.qbPulseTimer = null;
-    panel.querySelectorAll('.is-convert-hint').forEach(function (btn) { btn.classList.remove('is-convert-hint'); });
+    clearInterval(panel.qbRotationTimer);
+    panel.qbRotationTimer = null;
   }
   // Ribbon 做同款与面板 chip 共用此函数，不维护另一套提示状态。
   function selectPreset(panel, state, index) {
@@ -34,24 +33,12 @@
     closePopovers(panel); refresh(panel, state);
     panel.querySelector('.et-qb-input').placeholder = promptFor(state);
   }
-  function pulseConversion(panel) {
-    clearTimeout(panel.qbPulseTimer);
-    var chips = [0, 1, 2].map(function (index) { return panel.querySelector('.et-qb-skills [data-qb-preset="' + index + '"]'); });
-    chips.forEach(function (btn) { btn.classList.remove('is-convert-hint'); });
-    void panel.offsetWidth; // 重复点击只重播边框动画，不改轮播的计时或文案。
-    chips.forEach(function (btn) { btn.classList.add('is-convert-hint'); });
-    panel.qbPulseTimer = setTimeout(function () {
-      chips.forEach(function (btn) { btn.classList.remove('is-convert-hint'); });
-    }, 3000);
-  }
   function configure(panel, state, entry) {
-    if (entry === 'same') { selectPreset(panel, state, 3); return; }
-    if (entry === 'convert' && state.preset < 0 && panel.qbRotationTimer) {
-      closePopovers(panel); pulseConversion(panel); return;
-    }
+    var presetByEntry = { paste: 0, image: 1, merge: 2, same: 3 };
+    if (Object.prototype.hasOwnProperty.call(presetByEntry, entry)) { selectPreset(panel, state, presetByEntry[entry]); return; }
     stopGuidance(panel);
     state.mode = 'default'; state.preset = -1;
-    if (entry !== 'convert') state.rotation = 0;
+    state.rotation = 0;
     closePopovers(panel); refresh(panel, state);
     panel.querySelector('.et-qb-input').placeholder = promptFor(state);
     panel.qbRotationTimer = setInterval(function () {
@@ -60,7 +47,6 @@
       state.rotation = (state.rotation + 1) % defaultPrompts.length;
       panel.querySelector('.et-qb-input').placeholder = promptFor(state);
     }, 2500);
-    if (entry === 'convert') pulseConversion(panel);
   }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function icon(name) {

@@ -65,11 +65,3 @@
   height: 24px; padding: 0 8px; border: 1px solid var(--kd-color-line-regular);
   border-radius: var(--kd-border-radius-small); background: var(--kd-color-public-light);
 }
-.et-qb-skills .is-convert-hint { animation: et-qb-convert-breathe 1s ease-in-out 3; }
-@keyframes et-qb-convert-breathe {
-  0%, 100% { border-color: var(--kd-color-line-regular); }
-  50% { border-color: var(--kd-color-public-normal); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .et-qb-skills .is-convert-hint { animation: none; border-color: var(--kd-color-public-normal); }
-}
