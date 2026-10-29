@@ -69,8 +69,8 @@
     panel.querySelector('.et-qb-send').disabled = !state.text.trim() && !state.files.length;
     var fileButton = panel.querySelector('.et-qb-file-button');
     fileButton.hidden = !(state.preset >= 0 && presets[state.preset].file);
-    fileButton.classList.toggle('is-upload-chip', state.preset === 3);
-    fileButton.querySelector('.et-qb-file-label').textContent = state.preset === 3 ? '上传文件' : '选择文件';
+    fileButton.classList.toggle('is-upload-chip', state.preset >= 0 && presets[state.preset].file);
+    fileButton.querySelector('.et-qb-file-label').textContent = '上传文件';
     panel.querySelectorAll('[data-qb-preset]').forEach(function (btn) {
       var active = Number(btn.getAttribute('data-qb-preset')) === state.preset;
       btn.classList.toggle('is-active', active); btn.setAttribute('aria-pressed', String(active));

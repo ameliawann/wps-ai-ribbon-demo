@@ -41,23 +41,36 @@
   function mainButton(e,composer){return '<button type="button" class="'+(composer?'et-expert-composer-main':'rb-large-split-main')+'" data-et-ai-capability="assistant" aria-label="打开'+e.name+'" title="打开灵犀">'+(composer?portrait(e,'is-small')+'<span>'+e.name+'</span>':'<span class="rb-large-icon">'+portrait(e)+'</span>')+'</button>';}
   function triggerButton(e,composer){return '<button type="button" class="'+(composer?'et-expert-composer-menu':'rb-large-split-menu')+'" data-et-expert-trigger="'+(composer?'composer':'ribbon')+'" aria-label="'+(composer?'输入框':'功能区')+'专家库：'+e.name+'" aria-haspopup="menu" aria-expanded="false" aria-controls="et-expert-menu">'+(composer?portrait(e,'is-small')+'<span>'+e.name+'</span>'+arrow():'<span class="rb-large-label">'+e.name+arrow()+'</span>')+'</button>';}
   var dashboardIcon = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" requiredCustomFeatures=\"data-kd-color-scheme\" km_stroke-width=\"1\" km_darkmode=\"true\"><desc>看板视图</desc><style>\n    .kd-stroke-width-icon-regular { \n       stroke-width: var(--kd-stroke-width-icon-regular, 1px)\n    }\n    .kd-color-icon-primary {\n       fill: var(--kd-color-icon-primary, #333333);\n       stroke: var(--kd-color-icon-primary, #333333);\n       km_fill: #333333;\n       km_stroke: #333333;\n       km_darkmode_fill: #C7C7C7;\n       km_darkmode_stroke: #C7C7C7; \n    }</style><g id=\"et-dashboard-group-0\" class=\"kd-color-icon-primary kd-stroke-width-icon-regular\"><path id=\"et-dashboard-line\" d=\"M1.5 2C1.5 1.72386 1.72386 1.5 2 1.5H14C14.2761 1.5 14.5 1.72386 14.5 2V14C14.5 14.2761 14.2761 14.5 14 14.5H2C1.72386 14.5 1.5 14.2761 1.5 14V2Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/><path id=\"et-dashboard-line_2\" d=\"M9.5 4C9.5 3.72386 9.72386 3.5 10 3.5H12C12.2761 3.5 12.5 3.72386 12.5 4V9C12.5 9.27614 12.2761 9.5 12 9.5H10C9.72386 9.5 9.5 9.27614 9.5 9V4Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/><path id=\"et-dashboard-line_3\" d=\"M3.5 4C3.5 3.72386 3.72386 3.5 4 3.5H6C6.27614 3.5 6.5 3.72386 6.5 4V12C6.5 12.2761 6.27614 12.5 6 12.5H4C3.72386 12.5 3.5 12.2761 3.5 12V4Z\" fill=\"none\" vector-effect=\"non-scaling-stroke\" stroke-linejoin=\"round\"/></g></svg>";
+  function presentationSubButton(html){
+    var holder=document.createElement('div');holder.innerHTML=html;
+    var button=holder.firstElementChild;button.className='rb-tool rb-menu has-label';
+    var icon=button.querySelector('.rb-icon');icon.className='rb-icon rb-icon-16';
+    var wrapper=button.querySelector('.rb-large-icon');if(wrapper)wrapper.replaceWith(icon);
+    button.querySelector('.rb-large-label').className='rb-tool-label';
+    return button.outerHTML;
+  }
   function renderDashboardEntry(){
-    var button=root.querySelector('[data-et-format-entry]');if(!button)return;
-    if(!button.etFormatHTML)button.etFormatHTML=button.innerHTML;
+    var group=root.querySelector('[aria-label="数据呈现"]');if(!group)return;
+    if(!root.etPresentation){
+      root.etPresentation={
+        chart:group.querySelector('[data-et-ai-capability="chart"]').outerHTML,
+        beautify:group.querySelector('[data-et-ai-capability="beautify"]').outerHTML,
+        format:group.querySelector('[data-et-format-entry]').innerHTML
+      };
+    }
+    var saved=root.etPresentation;
     var proofread=root.querySelector('[data-et-proofread-entry], [data-et-ai-capability="proofread"]');
     if(proofread){
       proofread.setAttribute('data-et-proofread-entry','');
       if(!proofread.etProofreadHTML)proofread.etProofreadHTML=proofread.innerHTML;
-      var proofLabel=mode==='final'?'AI 数据校对':'AI 格式设置';
-      proofread.setAttribute('aria-label',proofLabel);
+      proofread.setAttribute('aria-label',mode==='final'?'AI 数据校对':'AI 格式设置');
       if(mode==='final'){proofread.setAttribute('data-et-ai-capability','proofread');proofread.innerHTML=proofread.etProofreadHTML;}
-      else{proofread.removeAttribute('data-et-ai-capability');proofread.innerHTML=button.etFormatHTML;}
+      else{proofread.removeAttribute('data-et-ai-capability');proofread.innerHTML=saved.format;}
     }
-    var stack=button.closest('[data-et-dashboard-stack]');if(stack)stack.hidden=mode!=='final';
-    button.hidden=mode!=='final';
-    button.setAttribute('aria-label','AI 数据看板');button.removeAttribute('title');
-    button.setAttribute('data-et-ai-capability','dashboard');
-    button.innerHTML='<span class="rb-icon rb-icon-16" aria-hidden="true">'+dashboardIcon+'</span><span class="rb-tool-label">AI 数据看板</span>';
+    var content=group.querySelector('.rb-group-content');
+    if(mode==='transition'){content.innerHTML=saved.chart+saved.beautify;return;}
+    var dashboard='<button type="button" class="rb-large" aria-label="AI 数据看板" data-et-ai-capability="dashboard"><span class="rb-large-icon"><span class="rb-icon rb-icon-24" aria-hidden="true">'+dashboardIcon+'</span></span><span class="rb-large-label">AI 数据看板</span></button>';
+    content.innerHTML=dashboard+'<div class="rb-stack">'+presentationSubButton(saved.chart)+presentationSubButton(saved.beautify)+'</div>';
   }
   function renderEntry(){
     if(!root||!tab)return;
