@@ -402,12 +402,13 @@
     else input.removeAttribute('data-record-placeholder');
   }
 
-  /* 录制技能入口：清空原输入，再放入录制技能 chip。 */
+  /* 录制技能入口：新开会话回到首页，再放入录制技能 chip。 */
   Agent.prepareRecordSkill = function (tabId, iconHtml) {
     var tab = tabById(tabId);
     if (!tab || tab.type !== 'et') return false;
     var s = sessionOf(tab);
-    if (!s.view || s.processing) return false;
+    if (!s.view) return false;
+    newChat(s);
     s.recordIconHTML = iconHtml;
     s.recommendationKind = 'record';
     renderEtRecommendations(s);
@@ -441,14 +442,14 @@
     setInputText(s, text); syncFromInput(s); focusInputEnd(s);
   };
 
-  /* ET Ribbon 能力入口：打开灵犀、准备可编辑提示词，不触发发送。 */
+  /* ET Ribbon 任务入口：新开会话、显示对应首页并填入提示词；助手沿用当前会话。 */
   Agent.prepareEtCapability = function (kind) {
     var tab = tabById(App.activeId);
     if (!tab || tab.type !== 'et') return;
     var prompts = {
       dashboard: '请根据【数据范围】生成可交互的数据看板，展示【核心指标】，支持按【日期/部门/其他维度】筛选，并让各图表之间联动。',
       assistant: '',
-      analysis: '',
+      analysis: '请分析【数据范围】中的【核心指标】，按【维度】对比表现，查看【时间范围】内的变化趋势，找出异常并总结关键结论。',
       proofread: '请核对【数据范围】中的【明细合计/公式计算结果】与【汇总值/对照数据】是否一致，定位差异记录、漏算项或错误公式，说明原因并修正计算错误。',
       match: '请根据【匹配字段】，将【来源表】与【目标表】中的数据进行匹配，把【需要补充的字段】填入目标表，并列出未匹配及重复匹配的记录。',
       clean: '请清洗【数据范围】：按【字段】去重，空值按【方式】处理，统一【日期/数字】格式。',
@@ -459,11 +460,12 @@
     var s = sessionOf(tab);
     if (s.collapsed) Agent.toggle();
     if (!s.view) return;
+    if (kind !== 'assistant') newChat(s);
     if (ET_RECOMMENDATIONS[kind]) { s.recommendationKind = kind; renderEtRecommendations(s); }
     else if (kind === 'assistant' && window.EtExperts && EtExperts.isFinal()) { s.recommendationKind = ''; renderEtRecommendations(s); }
     if (!s.processing) {
       s.entryPlaceholder = kind === 'analysis' ? '想了解哪些数据？试试描述要分析的指标、维度或趋势。' : '';
-      if (kind !== 'assistant' && kind !== 'analysis') setInputText(s, prompts[kind]);
+      if (kind !== 'assistant') setInputText(s, prompts[kind]);
       syncFromInput(s);
       focusInputEnd(s);
     }
